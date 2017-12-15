@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<methods>
+	<method>
+		<javaCommand>driveToWP</javaCommand>
+		<declaration>DriveToWP</declaration>
+		<instantiation>initDriveToWP</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+	<method>
+		<javaCommand>timeout</javaCommand>
+		<declaration>Timeout</declaration>
+		<instantiation>initTimeout</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+	<method>
+		<javaCommand>autoRoller</javaCommand>
+		<declaration>AutoRoller</declaration>
+		<instantiation>initAutoRoller</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+	<method>
+		<javaCommand>autoLift</javaCommand>
+		<declaration>AutoLift</declaration>
+		<instantiation>initAutoLift</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+	<method>
+		<javaCommand>autoWrist</javaCommand>
+		<declaration>AutoWrist</declaration>
+		<instantiation>initAutoWrist</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+	<method>
+		<javaCommand>autoGoalIntake</javaCommand>
+		<declaration>AutoGoalIntake</declaration>
+		<instantiation>initAutoGoalIntake</instantiation>
+		<doneReference>.isFinished</doneReference>
+		<pointer>true</pointer>
+	</method>
+</methods>
