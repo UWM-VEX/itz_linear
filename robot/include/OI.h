@@ -13,16 +13,8 @@ int OIGetDriveRight();
 int OIGetDriveY();
 int OIGetDriveX();
 int OIGetLift();
-int OIGetWrist();
-bool OIGetWristFront();
-bool OIGetWristMiddle();
-bool OIGetWristRear();
-bool OIGetWristSafetyOverride();
-bool OIInRoller();
-bool OIOutRoller();
-bool OIElevatorUp();
-bool OIElevatorDown();
-bool OIPuncherOut();
-bool OIPuncherIn();
+int OIGetClawHolder();
+int OIGetClaw();
+int OIGetGoalIntake();
 
 #endif /* INCLUDE_OI_H_ */

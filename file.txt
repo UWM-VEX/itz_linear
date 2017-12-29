@@ -3,73 +3,9 @@ Four-Bar
 ##
 Mode DO_NOTHING
 EndMode
-Mode One_Gl
-	{
-		driveToWP(defaultProps, -60, 0) ||
-		timeout(5000)
-	}
-	{
-		autoGoalIntake(robotGoalIntake, true, false, false, true) &&
-		timeout(1000)
-	}
-	{
-		driveToWP(defaultProps, 52, 0) ||
-		timeout(4000)
-	}
-	{
-		driveToWP(defaultProps, 0, blue_(170)) ||
-		timeout(2000)
-	}
-	{
-		driveToWP(defaultProps, -18, 0) ||
-		timeout(2000)
-	}
-	{
-		autoGoalIntake(robotGoalIntake, true, false, true, false) &&
-		timeout(1000)
-	}
-	timeout(1000)
-	{
-		driveToWP(defaultProps, 12, 0) ||
-		timeout(2000)
-	}
-	###
-	{
-		driveToWP(defaultProps, 0, blue_(-90)) ||
-		timeout(4000)
-	}
-	{
-		driveToWP(defaultProps, 18, 0) ||
-		timeout(4000)
-	}
-	###
-EndMode
 Mode TEST
 	driveToWP(defaultProps, 24, 0)
-	###
 	driveToWP(defaultProps, -24, 0)
 	driveToWP(defaultProps, 0, 90)
 	driveToWP(defaultProps, 0, -90)
-	{	
-		autoGoalIntake(robotGoalIntake, false, false, false, false) &&
-		timeout(500)
-	}
-	{	
-		autoGoalIntake(robotGoalIntake, false, true, false, true) &&
-		timeout(500)
-	}
-	{	
-		autoGoalIntake(robotGoalIntake, true, false, true, false) &&
-		timeout(500)
-	}
-	{	
-		autoGoalIntake(robotGoalIntake, true, true, true, true) &&
-		timeout(500)
-	}
-	autoWrist(robotWrist, WRIST_FRONT)
-	timeout(2000)
-	autoWrist(robotWrist, WRIST_MIDDLE)
-	timeout(2000)
-	autoWrist(robotWrist, WRIST_REAR)
-	###
 EndMode

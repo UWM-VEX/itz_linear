@@ -17,13 +17,8 @@
 
 #include "main.h"
 
-bool wristManual;
-int wristPosition;
-
 void teleopInit()
 {
-	wristManual = true;
-	wristPosition = WRIST_MIDDLE;
 }
 
 /**
@@ -58,69 +53,9 @@ void operatorControl()
 			liftAtSpeed(robotLift, 0);
 		}
 		
+		clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
 
-		if(abs(OIGetWrist()) > 10)
-		{
-			wristManual = true;
-			wristAtSpeed(robotWrist, OIGetWrist(), OIGetWristSafetyOverride());
-		}
-		else if(OIGetWristFront())
-		{
-			wristManual = false;
-			wristPosition = WRIST_FRONT;
-			wristToPosition(robotWrist, WRIST_FRONT);
-		}
-		else if(OIGetWristMiddle())
-		{
-			wristManual = false;
-			wristPosition = WRIST_MIDDLE;
-			wristToPosition(robotWrist, WRIST_MIDDLE);
-		}
-		else if(OIGetWristRear())
-		{
-			wristManual = false;
-			wristPosition = WRIST_REAR;
-			wristToPosition(robotWrist, WRIST_REAR);
-		}
-		else if(wristManual)
-		{
-			wristAtSpeed(robotWrist, OIGetWrist(), OIGetWristSafetyOverride());
-		}
-		else
-		{
-			wristToPosition(robotWrist, wristPosition);
-		}
-
-		if(OIInRoller())
-		{
-			inRoller(robotRoller);
-		}
-		else if(OIOutRoller())
-		{
-			outRoller(robotRoller);
-		}
-		else
-		{
-			stopRoller(robotRoller);
-		}
-
-		if(OIElevatorUp())
-		{
-			elevatorUp(robotGoalIntake);
-		}
-		else if(OIElevatorDown())
-		{
-			elevatorDown(robotGoalIntake);
-		}
-
-		if(OIPuncherOut())
-		{
-			puncherOut(robotGoalIntake);
-		}
-		else if(OIPuncherIn())
-		{
-			puncherIn(robotGoalIntake);
-		}
+		goalIntakeAtSpeed(robotGoalIntake, OIGetGoalIntake());
 
 		delay(25);
 	}

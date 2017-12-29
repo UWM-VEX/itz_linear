@@ -99,29 +99,9 @@ DriveToWPProperties * defaultProps;
 // START OF DECLARATIONS
 
 DriveToWP * command1;
-Timeout * command2;
-
-AutoGoalIntake * command3;
-Timeout * command4;
-
-DriveToWP * command5;
-Timeout * command6;
-
-DriveToWP * command7;
-Timeout * command8;
-
-DriveToWP * command9;
-Timeout * command10;
-
-AutoGoalIntake * command11;
-Timeout * command12;
-
-Timeout * command13;
-DriveToWP * command14;
-Timeout * command15;
-
-
-DriveToWP * command16;
+DriveToWP * command2;
+DriveToWP * command3;
+DriveToWP * command4;
 
 // END OF DECLARATIONS
 
@@ -141,34 +121,12 @@ void autonomousInit()
 if(autonomousSelection == DO_NOTHING)
 {
 }
-if(autonomousSelection == One_Gl)
-{
-	command1 = initDriveToWP(defaultProps, -60, 0);
-	command2 = initTimeout(5000);
-
-	command3 = initAutoGoalIntake(robotGoalIntake, true, false, false, true);
-	command4 = initTimeout(1000);
-
-	command5 = initDriveToWP(defaultProps, 52, 0);
-	command6 = initTimeout(4000);
-
-	command7 = initDriveToWP(defaultProps, 0, blue_(170));
-	command8 = initTimeout(2000);
-
-	command9 = initDriveToWP(defaultProps, -18, 0);
-	command10 = initTimeout(2000);
-
-	command11 = initAutoGoalIntake(robotGoalIntake, true, false, true, false);
-	command12 = initTimeout(1000);
-
-	command13 = initTimeout(1000);
-	command14 = initDriveToWP(defaultProps, 12, 0);
-	command15 = initTimeout(2000);
-
-}
 if(autonomousSelection == TEST)
 {
-	command16 = initDriveToWP(defaultProps, 24, 0);
+	command1 = initDriveToWP(defaultProps, 24, 0);
+	command2 = initDriveToWP(defaultProps, -24, 0);
+	command3 = initDriveToWP(defaultProps, 0, 90);
+	command4 = initDriveToWP(defaultProps, 0, -90);
 }
 	// END OF INSTANTIATIONS
 
@@ -206,63 +164,28 @@ void autonomousPeriodic()
 				break;
 		}
 		break;
-		case(One_Gl):
-		switch(autonomousInfo.step)
-		{
-			case(1):
-				driveToWP(command1);
-				timeout(command2);
-				autonomousInfo.isFinished = (*command1).isFinished || (*command2).isFinished;
-				break;
-			case(2):
-				autoGoalIntake(command3);
-				timeout(command4);
-				autonomousInfo.isFinished = (*command3).isFinished && (*command4).isFinished;
-				break;
-			case(3):
-				driveToWP(command5);
-				timeout(command6);
-				autonomousInfo.isFinished = (*command5).isFinished || (*command6).isFinished;
-				break;
-			case(4):
-				driveToWP(command7);
-				timeout(command8);
-				autonomousInfo.isFinished = (*command7).isFinished || (*command8).isFinished;
-				break;
-			case(5):
-				driveToWP(command9);
-				timeout(command10);
-				autonomousInfo.isFinished = (*command9).isFinished || (*command10).isFinished;
-				break;
-			case(6):
-				autoGoalIntake(command11);
-				timeout(command12);
-				autonomousInfo.isFinished = (*command11).isFinished && (*command12).isFinished;
-				break;
-			case(7):
-				timeout(command13);
-
-				autonomousInfo.isFinished = (*command13).isFinished;
-				break;
-			case(8):
-				driveToWP(command14);
-				timeout(command15);
-				autonomousInfo.isFinished = (*command14).isFinished || (*command15).isFinished;
-				break;
-
-
-			default:
-				isAuto = 0;
-				break;
-		}
-		break;
 		case(TEST):
 		switch(autonomousInfo.step)
 		{
 			case(1):
-				driveToWP(command16);
+				driveToWP(command1);
 
-				autonomousInfo.isFinished = (*command16).isFinished;
+				autonomousInfo.isFinished = (*command1).isFinished;
+				break;
+			case(2):
+				driveToWP(command2);
+
+				autonomousInfo.isFinished = (*command2).isFinished;
+				break;
+			case(3):
+				driveToWP(command3);
+
+				autonomousInfo.isFinished = (*command3).isFinished;
+				break;
+			case(4):
+				driveToWP(command4);
+
+				autonomousInfo.isFinished = (*command4).isFinished;
 				break;
 
 

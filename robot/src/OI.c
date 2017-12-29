@@ -32,57 +32,17 @@ int OIGetLift()
 	return joystickGetAnalog(1,3);
 }
 
-int OIGetWrist()
+int OIGetClawHolder()
 {
 	return -joystickGetAnalog(2,2);
 }
 
-bool OIGetWristFront()
+int OIGetClaw()
 {
-	return joystickGetDigital(2, 8, JOY_UP);
+	return joystickGetAnalog(2,1);
 }
 
-bool OIGetWristMiddle()
+int OIGetGoalIntake()
 {
-	return joystickGetDigital(2, 8, JOY_RIGHT);
-}
-
-bool OIGetWristRear()
-{
-	return joystickGetDigital(2, 8, JOY_DOWN);
-}
-
-bool OIGetWristSafetyOverride()
-{
-	return joystickGetDigital(2, 6, JOY_UP) && joystickGetDigital(2, 6, JOY_DOWN);
-}
-
-bool OIInRoller()
-{
-	return joystickGetDigital(2, 5, JOY_UP);
-}
-
-bool OIOutRoller()
-{
-	return joystickGetDigital(2, 5, JOY_DOWN);
-}
-
-bool OIElevatorUp()
-{
-	return joystickGetDigital(2, 7, JOY_UP);
-}
-
-bool OIElevatorDown()
-{
-	return joystickGetDigital(2, 7, JOY_DOWN);
-}
-
-bool OIPuncherOut()
-{
-	return joystickGetDigital(2, 7, JOY_RIGHT);
-}
-
-bool OIPuncherIn()
-{
-	return joystickGetDigital(2, 7, JOY_LEFT);
+	return joystickGetAnalog(2,3);
 }

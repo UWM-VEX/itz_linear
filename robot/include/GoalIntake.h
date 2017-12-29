@@ -4,16 +4,11 @@
 #include "main.h"
 
 struct GoalIntake{
-  int elevatorSol;
-  int puncherSol;
+  PantherMotor leftMotor;
+  PantherMotor rightMotor;
 } typedef GoalIntake;
 
-GoalIntake* initGoalIntake(int elevatorSol, int puncherSol);
-void elevatorUp(GoalIntake* goalIntake);
-void elevatorDown(GoalIntake* goalIntake);
-void puncherOut(GoalIntake* goalIntake);
-void puncherIn(GoalIntake* goalIntake);
-void elevatorSet(GoalIntake* goalIntake, int value);
-void puncherSet(GoalIntake* goalIntake, int value);
+GoalIntake* initGoalIntake(PantherMotor leftMotor, PantherMotor rightMotor);
+void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed);
 
 #endif
