@@ -25,6 +25,16 @@ PIDController* initPIDController(double kP, double kI, double kD, double kF, dou
 	return newController;
 }
 
+void PIDReset(PIDController *controller)
+{
+	controller->setPoint = 0;
+	controller->lastError = 0;
+	controller->lastTime = millis();
+	controller->sumOfError = 0;
+	controller->lastD = 0;
+	controller->lastDTime = millis();
+}
+
 void PIDsetkP(PIDController *controller, double kP)
 {
 	(*controller).kP = kP;

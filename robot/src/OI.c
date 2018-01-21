@@ -37,6 +37,16 @@ int OIGetClawHolder()
 	return -joystickGetAnalog(2,2);
 }
 
+int OIGetClawHolderLoad()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetClawHolderStack()
+{
+	return joystickGetDigital(2, 7, JOY_UP);
+}
+
 int OIGetClaw()
 {
 	return joystickGetAnalog(2,1);

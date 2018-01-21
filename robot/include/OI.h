@@ -14,6 +14,8 @@ int OIGetDriveY();
 int OIGetDriveX();
 int OIGetLift();
 int OIGetClawHolder();
+int OIGetClawHolderLoad();
+int OIGetClawHolderStack();
 int OIGetClaw();
 int OIGetGoalIntake();
 

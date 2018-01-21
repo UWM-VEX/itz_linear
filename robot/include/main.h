@@ -43,6 +43,9 @@
 // This prevents multiple inclusion, which isn't bad for this file but is good practice
 #define MAIN_H_
 
+#define CLAW_HOLDER_LOAD 100
+#define CLAW_HOLDER_STACK 200
+
 #include <API.h>
 #include "OI.h"
 #include "PantherMotor.h"

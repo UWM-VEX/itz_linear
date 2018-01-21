@@ -4,8 +4,8 @@ DRIVE_Arcade_Drive	The drivetrain will support arcade drive.	Drive.c:arcadeDrive
 CLAW_Open	The claw will support being opened.	TODO	TODO
 CLAW_Close	The claw will support being closed.	TODO	TODO
 CLAW_HOLDER_Manual_Drive	The claw holder will support being manually driven.	ClawHolder.c:clawHolderAtSpeed()	opcontrol.c:operatorControl()
-CLAW_HOLDER_Loading_Preset	The claw holder will support a preset position for loading cones.	TODO	TODO
-CLAW_HOLDER_Stacking_Preset	The claw holder will support a preset position for stacking cones.	TODO	TODO
+CLAW_HOLDER_Loading_Preset	The claw holder will support a preset position for loading cones.	ClawHolder.c:clawHolderLoadPosition()	opcontrol.c:operatorControl()
+CLAW_HOLDER_Stacking_Preset	The claw holder will support a preset position for stacking cones.	ClawHolder.c:clawHolderStackPosition()	opcontrol.c:operatorControl()
 LIFT_Manual_Drive	The lift will support being driven manually.	Lift.c:liftAtSpeed()	opcontrol.c:operatorControl()
 LIFT_Floor_Loading_Preset	The lift will support a preset position for loading cones from the ground.	TODO	TODO
 LIFT_Auto_Loader_Preset	The lift will support a preset position for loading cones from the auto loader.	TODO	TODO

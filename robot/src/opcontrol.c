@@ -34,10 +34,17 @@ void teleopInit()
  */
 void operatorControl()
 {
+	bool clawHolderAutoMode = false;
+	int clawHolderPosition = CLAW_HOLDER_LOAD;
+	bool lastClawHolderAutoMode = false;
+	int lastClawHolderPosition = CLAW_HOLDER_LOAD;
+
 	teleopInit();
 
 	while (true)
 	{
+		clawHolderProcess(robotClawHolder);
+
 		tankDrive(robotDrive, OIGetDriveLeft(), OIGetDriveRight());
 		
 		if(joystickGetDigital(1, 5, JOY_UP))
@@ -53,7 +60,43 @@ void operatorControl()
 			liftAtSpeed(robotLift, 0);
 		}
 		
-		clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
+		if(abs(OIGetClawHolder()) > 20)
+		{
+			clawHolderAutoMode = false;
+			clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
+		}
+		else
+		{
+			if(OIGetClawHolderLoad())
+			{
+				clawHolderAutoMode = true;
+				clawHolderPosition = CLAW_HOLDER_LOAD;
+
+				bool firstTime = ( ! lastClawHolderAutoMode) || (lastClawHolderPosition != CLAW_HOLDER_LOAD);
+
+				clawHolderLoadPosition(robotClawHolder, firstTime);
+			}
+			else if(OIGetClawHolderStack())
+			{
+				clawHolderAutoMode = true;
+				clawHolderPosition = CLAW_HOLDER_STACK;
+
+				bool firstTime = ( ! lastClawHolderAutoMode) || (lastClawHolderPosition != CLAW_HOLDER_STACK);
+
+				clawHolderStackPosition(robotClawHolder, firstTime);
+			}
+			else
+			{
+				if(clawHolderAutoMode)
+				{
+					clawHolderToPosition(robotClawHolder, clawHolderPosition, false);
+				}
+				else
+				{
+					clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
+				}
+			}
+		}
 
 		goalIntakeAtSpeed(robotGoalIntake, OIGetGoalIntake());
 

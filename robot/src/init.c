@@ -154,6 +154,7 @@ void lcdModeSelect()
   * The purpose of this function is solely to set the default pin modes (pinMode()) and port states (digitalWrite()) of limit switches, push buttons, and solenoids. It can also safely configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
   */
 void initializeIO() {
+	robotClawHolder = initClawHolderIO(10);
 	lcdInit(uart1);
 }
 
@@ -172,7 +173,7 @@ void initialize() {
 						initPantherMotor(1,1), initPantherMotor(10,0),
 						encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 190));
 	robotLift = initLift(initPantherMotor(4,1), initPantherMotor(8,0));
-	robotClawHolder = initClawHolder(initPantherMotor(5,1), initPantherMotor(9,0));
+	initClawHolder(robotClawHolder, initPantherMotor(5,1), initPantherMotor(9,0), encoderInit(5, 6, 0));
 	robotClaw = initClaw(initPantherMotor(7,0));
 	robotGoalIntake = initGoalIntake(initPantherMotor(3,0), initPantherMotor(6,0));
 

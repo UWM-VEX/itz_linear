@@ -149,6 +149,8 @@ void autonomousPeriodic()
 
 	autonomousInfo.elapsedTime = millis() - stepStartTime;
 
+	clawHolderProcess(robotClawHolder);
+
 	//lcdPrint(uart1, 1, "Step: %d", autonomousInfo.step);
 
 	switch(autonomousSelection)
