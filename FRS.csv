@@ -27,5 +27,5 @@ AUTO_Lift_High_Stack_Preset	The autonomous program will support moving the lift 
 AUTO_Lift_Stationary_Goal_Preset	The autonomous program will support moving the lift to its stationary goal preset.	TODO	TODO
 AUTO_Goal_Intake_Up	The autonomous program will support moving the goal intake to its up preset.	TODO	TODO
 AUTO_Goal_Intake_Down	The autonomous program will support moving the goal intake to its down preset.	TODO	TODO
-AUTO_Claw_Holder_Load	The autonomous program will support moving the claw holder to its loading preset.	TODO	TODO
-AUTO_Claw_Holder_Stack	The auontomous program will support moving the claw holder to its stacking preset.	TODO	TODO
+AUTO_Claw_Holder_Load	The autonomous program will support moving the claw holder to its loading preset.	AutoClawHolder.c:autoClawHolder()	n/a
+AUTO_Claw_Holder_Stack	The auontomous program will support moving the claw holder to its stacking preset.	AutoClawHolder.c:autoClawHolder()	n/a
