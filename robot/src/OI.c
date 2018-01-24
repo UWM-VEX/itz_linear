@@ -32,6 +32,36 @@ int OIGetLift()
 	return joystickGetAnalog(1,3);
 }
 
+int OIGetLiftFloorLoad()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetLiftAutoLoad()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetLiftLowStack()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetLiftMidStack()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetLiftHighStack()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
+int OIGetLiftStationaryStack()
+{
+	return joystickGetDigital(2, 7, JOY_DOWN);
+}
+
 int OIGetClawHolder()
 {
 	return -joystickGetAnalog(2,2);

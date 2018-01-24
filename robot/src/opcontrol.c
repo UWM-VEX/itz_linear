@@ -39,25 +39,92 @@ void operatorControl()
 	bool lastClawHolderAutoMode = false;
 	int lastClawHolderPosition = CLAW_HOLDER_LOAD;
 
+	bool liftAutoMode = false;
+	int liftPosition = LIFT_FLOOR_LOAD;
+	bool lastLiftAutoMode = false;
+	int lastLiftPosition = LIFT_FLOOR_LOAD;
+
 	teleopInit();
 
 	while (true)
 	{
 		clawHolderProcess(robotClawHolder);
+		liftProcess(robotLift);
 
 		tankDrive(robotDrive, OIGetDriveLeft(), OIGetDriveRight());
 		
-		if(joystickGetDigital(1, 5, JOY_UP))
+		if(abs(OIGetLift()) > 20)
 		{
-			liftAtSpeed(robotLift, 127);
-		}
-		else if(joystickGetDigital(1, 5, JOY_DOWN))
-		{
-			liftAtSpeed(robotLift, -127);
+			liftAutoMode = false;
+			liftAtSpeed(robotLift, OIGetLift());
 		}
 		else
 		{
-			liftAtSpeed(robotLift, 0);
+			if(OIGetLiftFloorLoad())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_FLOOR_LOAD;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_FLOOR_LOAD);
+
+				liftFloorLoadPosition(robotLift, firstTime);
+			}
+			else if(OIGetLiftAutoLoad())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_AUTO_LOAD;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_AUTO_LOAD);
+
+				liftAutoLoadPosition(robotLift, firstTime);
+			}
+			else if(OIGetLiftLowStack())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_LOW_STACK;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_LOW_STACK);
+
+				liftLowStackPosition(robotLift, firstTime);
+			}
+			else if(OIGetLiftMidStack())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_MID_STACK;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_MID_STACK);
+
+				liftMidStackPosition(robotLift, firstTime);
+			}
+			else if(OIGetLiftHighStack())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_HIGH_STACK;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_HIGH_STACK);
+
+				liftHighStackPosition(robotLift, firstTime);
+			}
+			else if(OIGetLiftStationaryStack())
+			{
+				liftAutoMode = true;
+				liftPosition = LIFT_STATIONARY_STACK;
+
+				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_STATIONARY_STACK);
+
+				liftStationaryStackPosition(robotLift, firstTime);
+			}
+			else
+			{
+				if(liftAutoMode)
+				{
+					liftToPosition(robotLift, liftPosition, false);
+				}
+				else
+				{
+					liftAtSpeed(robotLift, OIGetLift());
+				}
+			}
 		}
 		
 		if(abs(OIGetClawHolder()) > 20)

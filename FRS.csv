@@ -7,12 +7,12 @@ CLAW_HOLDER_Manual_Drive	The claw holder will support being manually driven.	Cla
 CLAW_HOLDER_Loading_Preset	The claw holder will support a preset position for loading cones.	ClawHolder.c:clawHolderLoadPosition()	opcontrol.c:operatorControl()
 CLAW_HOLDER_Stacking_Preset	The claw holder will support a preset position for stacking cones.	ClawHolder.c:clawHolderStackPosition()	opcontrol.c:operatorControl()
 LIFT_Manual_Drive	The lift will support being driven manually.	Lift.c:liftAtSpeed()	opcontrol.c:operatorControl()
-LIFT_Floor_Loading_Preset	The lift will support a preset position for loading cones from the ground.	TODO	TODO
-LIFT_Auto_Loader_Preset	The lift will support a preset position for loading cones from the auto loader.	TODO	TODO
-LIFT_Low_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 0-2 cones	TODO	TODO
-LIFT_Mid_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 3-4 cones	TODO	TODO
-LIFT_High_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 5-6 cones.	TODO	TODO
-LIFT_Stationary_Goal_Preset	The lift will support a preset position for mobile goal stacking on top of the stationary goal.	TODO	TODO
+LIFT_Floor_Loading_Preset	The lift will support a preset position for loading cones from the ground.	Lift.c:liftFloorLoadPosition()	opcontrol.c:operatorControl()
+LIFT_Auto_Loader_Preset	The lift will support a preset position for loading cones from the auto loader.	Lift.c:liftAutoLoadPosition()	opcontrol.c:operatorControl()
+LIFT_Low_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 0-2 cones	Lift.c:liftLowStackPosition()	opcontrol.c:operatorControl()
+LIFT_Mid_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 3-4 cones	Lift.c:liftMidStackPosition()	opcontrol.c:operatorControl()
+LIFT_High_Stack_Preset	The lift will support a preset position for mobile goal stacking on top of 5-6 cones.	Lift.c:liftHighStackPosition()	opcontrol.c:operatorControl()
+LIFT_Stationary_Goal_Preset	The lift will support a preset position for mobile goal stacking on top of the stationary goal.	Lift.c:liftStationaryStackPosition()	opcontrol.c:operatorControl()
 GOAL_INTAKE_Manual_Drive	The goal intake will support being manually driven.	GoalIntake.c:goalIntakeAtSpeed()	opcontrol.c:operatorControl()
 GOAL_INTAKE_Up_Preset	The goal intake will support an up position preset.	TODO	TODO
 GOAL_INTAKE_Down_Preset	The goal intake will support a down position preset.	TODO	TODO
