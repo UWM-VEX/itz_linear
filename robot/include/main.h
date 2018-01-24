@@ -58,6 +58,7 @@
 #include "Auto.h"
 #include "DriveToWP.h"
 #include "AutoClawHolder.h"
+#include "AutoLift.h"
 #include "Timeout.h"
 
 

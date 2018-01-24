@@ -19,12 +19,12 @@ GOAL_INTAKE_Down_Preset	The goal intake will support a down position preset.	TOD
 AUTO_Drive_To_WP	The autonomous program will support driving to a set distance or rotation.	DriveToWP.c:driveToWP()	n/a
 AUTO_Claw_Open	The autonomous program will support opening the claw.	TODO	TODO
 AUTO_Claw_Close	The autonomous program will support closing the claw.	TODO	TODO
-AUTO_Lift_Floor_Loading_Preset	The autonomous program will support moving the lift to its floor loading preset.	TODO	TODO
-AUTO_Lift_Auto_Loader_Preset	The autonomous program will support moving the lift to its auto loader preset.	TODO	TODO
-AUTO_Lift_Low_Stack_Preset	The autonomous program will support moving the lift to its low stacking preset.	TODO	TODO
-AUTO_Lift_Mid_Stack_Preset	The autonomous program will support moving the lift to its mid stacking preset.	TODO	TODO
-AUTO_Lift_High_Stack_Preset	The autonomous program will support moving the lift to its high stacking preset.	TODO	TODO
-AUTO_Lift_Stationary_Goal_Preset	The autonomous program will support moving the lift to its stationary goal preset.	TODO	TODO
+AUTO_Lift_Floor_Loading_Preset	The autonomous program will support moving the lift to its floor loading preset.	AutoLift.c:autoLift()	n/a
+AUTO_Lift_Auto_Loader_Preset	The autonomous program will support moving the lift to its auto loader preset.	AutoLift.c:autoLift()	n/a
+AUTO_Lift_Low_Stack_Preset	The autonomous program will support moving the lift to its low stacking preset.	AutoLift.c:autoLift()	n/a
+AUTO_Lift_Mid_Stack_Preset	The autonomous program will support moving the lift to its mid stacking preset.	AutoLift.c:autoLift()	n/a
+AUTO_Lift_High_Stack_Preset	The autonomous program will support moving the lift to its high stacking preset.	AutoLift.c:autoLift()	n/a
+AUTO_Lift_Stationary_Goal_Preset	The autonomous program will support moving the lift to its stationary goal preset.	AutoLift.c:autoLift()	n/a
 AUTO_Goal_Intake_Up	The autonomous program will support moving the goal intake to its up preset.	TODO	TODO
 AUTO_Goal_Intake_Down	The autonomous program will support moving the goal intake to its down preset.	TODO	TODO
 AUTO_Claw_Holder_Load	The autonomous program will support moving the claw holder to its loading preset.	AutoClawHolder.c:autoClawHolder()	n/a
