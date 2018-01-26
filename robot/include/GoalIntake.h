@@ -15,5 +15,6 @@ struct GoalIntake{
 GoalIntake* initGoalIntakeIO(int solenoid);
 void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int pot);
 void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed);
+bool goalIntakeToPosition(GoalIntake* goalIntake, int position);
 
 #endif

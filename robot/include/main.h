@@ -59,6 +59,7 @@
 #include "DriveToWP.h"
 #include "AutoClawHolder.h"
 #include "AutoLift.h"
+#include "AutoGoalIntake.h"
 #include "Timeout.h"
 
 
