@@ -23,3 +23,8 @@ void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
 
   setPantherMotor(goalIntake->motor, speed);
 }
+
+bool goalIntakeToPosition(GoalIntake* goalIntake, int position)
+{
+  return true;
+}
