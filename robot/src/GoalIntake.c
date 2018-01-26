@@ -26,5 +26,20 @@ void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
 
 bool goalIntakeToPosition(GoalIntake* goalIntake, int position)
 {
-  return true;
+	int currentPosition = analogRead(goalIntake->pot);
+	if (abs(currentPosition - position) < 20)
+	{
+		goalIntakeAtSpeed(goalIntake, 0);
+		return true;
+	}
+	else if (currentPosition > position)
+	{
+		goalIntakeAtSpeed(goalIntake, -50);
+		return false;
+	}
+	else if (currentPosition < position)
+	{
+		goalIntakeAtSpeed(goalIntake, 50);
+		return false;
+	}
 }
