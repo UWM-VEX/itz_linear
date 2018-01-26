@@ -16,6 +16,8 @@ LIFT_Stationary_Goal_Preset	The lift will support a preset position for mobile g
 GOAL_INTAKE_Manual_Drive	The goal intake will support being manually driven.	GoalIntake.c:goalIntakeAtSpeed()	opcontrol.c:operatorControl()
 GOAL_INTAKE_Up_Preset	The goal intake will support an up position preset.	TODO	TODO
 GOAL_INTAKE_Down_Preset	The goal intake will support a down position preset.	TODO	TODO
+GOAL_INTAKE_OPEN	The goal intake will support opening.	TODO	TODO
+GOAL_INTAKE_CLOSE	The goal intake will support closing.	TODO	TODO
 AUTO_Drive_To_WP	The autonomous program will support driving to a set distance or rotation.	DriveToWP.c:driveToWP()	n/a
 AUTO_Claw_Open	The autonomous program will support opening the claw.	TODO	TODO
 AUTO_Claw_Close	The autonomous program will support closing the claw.	TODO	TODO
