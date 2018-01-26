@@ -3,12 +3,17 @@
 
 #include "main.h"
 
+#define GOAL_INTAKE_DOWN 100
+#define GOAL_INTAKE_UP 3000
+
 struct GoalIntake{
-  PantherMotor leftMotor;
-  PantherMotor rightMotor;
+  PantherMotor motor;
+  int solenoid;
+  int pot;
 } typedef GoalIntake;
 
-GoalIntake* initGoalIntake(PantherMotor leftMotor, PantherMotor rightMotor);
+GoalIntake* initGoalIntakeIO(int solenoid);
+void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int pot);
 void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed);
 
 #endif

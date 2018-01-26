@@ -156,6 +156,7 @@ void lcdModeSelect()
 void initializeIO() {
 	robotLift = initLiftIO(9);
 	robotClawHolder = initClawHolderIO(10);
+	robotGoalIntake = initGoalIntakeIO(11);
 	lcdInit(uart1);
 }
 
@@ -176,7 +177,7 @@ void initialize() {
 	initLift(robotLift, initPantherMotor(4,1), initPantherMotor(8,0), encoderInit(7, 8, 0));
 	initClawHolder(robotClawHolder, initPantherMotor(5,1), initPantherMotor(9,0), encoderInit(5, 6, 0));
 	robotClaw = initClaw(initPantherMotor(7,0));
-	robotGoalIntake = initGoalIntake(initPantherMotor(3,0), initPantherMotor(6,0));
+	initGoalIntake(robotGoalIntake, initPantherMotor(3,0), 2);
 
 	lcdModeSelect();
 }

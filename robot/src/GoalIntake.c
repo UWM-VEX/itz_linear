@@ -1,19 +1,25 @@
 #include "main.h"
 
-GoalIntake* initGoalIntake(PantherMotor leftMotor, PantherMotor rightMotor)
+GoalIntake* initGoalIntakeIO(int solenoid)
 {
   GoalIntake* newIntake = (GoalIntake*) malloc(sizeof(GoalIntake));
 
-  newIntake->leftMotor = leftMotor;
-  newIntake->rightMotor = rightMotor;
+  newIntake->solenoid = solenoid;
+
+  pinMode(solenoid, OUTPUT);
 
   return newIntake;
+}
+
+void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int pot)
+{
+  goalIntake->motor = motor;
+  goalIntake->pot = pot;
 }
 
 void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
 {
   speed = limit(speed, 127, -127);
 
-  setPantherMotor(goalIntake->leftMotor, speed);
-  setPantherMotor(goalIntake->rightMotor, speed);
+  setPantherMotor(goalIntake->motor, speed);
 }
