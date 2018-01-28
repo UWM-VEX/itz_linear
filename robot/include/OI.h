@@ -23,6 +23,9 @@ int OIGetClawHolder();
 int OIGetClawHolderLoad();
 int OIGetClawHolderStack();
 int OIGetClaw();
-int OIGetGoalIntake();
+int OIGetGoalIntakeUp();
+int OIGetGoalIntakeDown();
+int OIGetGoalIntakeOpen();
+int OIGetGoalIntakeClose();
 
 #endif /* INCLUDE_OI_H_ */

@@ -44,6 +44,8 @@ void operatorControl()
 	bool lastLiftAutoMode = false;
 	int lastLiftPosition = LIFT_FLOOR_LOAD;
 
+	int goalIntakeState = GOAL_INTAKE_UP;
+
 	teleopInit();
 
 	while (true)
@@ -165,7 +167,32 @@ void operatorControl()
 			}
 		}
 
-		goalIntakeAtSpeed(robotGoalIntake, OIGetGoalIntake());
+		if(OIGetGoalIntakeUp())
+		{
+			goalIntakeState = GOAL_INTAKE_UP;
+		}
+		else if(OIGetGoalIntakeDown())
+		{
+			goalIntakeState = GOAL_INTAKE_DOWN;
+		}
+
+		if(goalIntakeState == GOAL_INTAKE_UP)
+		{
+			goalIntakeUp(robotGoalIntake);
+		}
+		else if(goalIntakeState == GOAL_INTAKE_DOWN)
+		{
+			goalIntakeDown(robotGoalIntake);
+		}
+
+		if(OIGetGoalIntakeOpen())
+		{
+			goalIntakeOpen(robotGoalIntake);
+		}
+		else if(OIGetGoalIntakeDown())
+		{
+			goalIntakeDown(robotGoalIntake);
+		}
 
 		delay(25);
 	}

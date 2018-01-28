@@ -34,12 +34,37 @@ bool goalIntakeToPosition(GoalIntake* goalIntake, int position)
 	}
 	else if (currentPosition > position)
 	{
-		goalIntakeAtSpeed(goalIntake, -50);
+		goalIntakeAtSpeed(goalIntake, -127);
 		return false;
 	}
-	else if (currentPosition < position)
+	else
 	{
-		goalIntakeAtSpeed(goalIntake, 50);
+		goalIntakeAtSpeed(goalIntake, 127);
 		return false;
 	}
+}
+
+bool goalIntakeUp(GoalIntake* goalIntake)
+{
+	return goalIntakeToPosition(goalIntake, GOAL_INTAKE_UP);
+}
+
+bool goalIntakeDown(GoalIntake* goalIntake)
+{
+	return goalIntakeToPosition(goalIntake, GOAL_INTAKE_DOWN);
+}
+
+void goalIntakePneumatics(GoalIntake* goalIntake, int position)
+{
+	digitalWrite(goalIntake->solenoid, position);
+}
+
+void goalIntakeOpen(GoalIntake* goalIntake)
+{
+	goalIntakePneumatics(goalIntake, GOAL_INTAKE_OPEN);
+}
+
+void GoalIntakeClose(GoalIntake* goalIntake)
+{
+	goalIntakePneumatics(goalIntake, GOAL_INTAKE_CLOSE);
 }

@@ -82,7 +82,22 @@ int OIGetClaw()
 	return joystickGetAnalog(2,1);
 }
 
-int OIGetGoalIntake()
+int OIGetGoalIntakeUp()
 {
-	return joystickGetAnalog(2,3);
+	return joystickGetDigital(2, 5, JOY_UP);
+}
+
+int OIGetGoalIntakeDown()
+{
+	return joystickGetDigital(2, 5, JOY_DOWN);
+}
+
+int OIGetGoalIntakeOpen()
+{
+	return joystickGetDigital(2, 6, JOY_UP);
+}
+
+int OIGetGoalIntakeClose()
+{
+	return joystickGetDigital(2, 6, JOY_DOWN);
 }
