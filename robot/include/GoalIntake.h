@@ -22,6 +22,6 @@ bool goalIntakeUp(GoalIntake* goalIntake);
 bool goalIntakeDown(GoalIntake* goalIntake);
 void goalIntakePneumatics(GoalIntake* goalIntake, int position);
 void goalIntakeOpen(GoalIntake* goalIntake);
-void GoalIntakeClose(GoalIntake* goalIntake);
+void goalIntakeClose(GoalIntake* goalIntake);
 
 #endif

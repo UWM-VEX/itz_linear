@@ -167,11 +167,11 @@ void operatorControl()
 			}
 		}
 
-		if(OIGetGoalIntakeUp())
+		if(OIGetGoalIntakeCarry())
 		{
 			goalIntakeState = GOAL_INTAKE_UP;
 		}
-		else if(OIGetGoalIntakeDown())
+		else if(OIGetGoalIntakeRelease())
 		{
 			goalIntakeState = GOAL_INTAKE_DOWN;
 		}
@@ -179,19 +179,12 @@ void operatorControl()
 		if(goalIntakeState == GOAL_INTAKE_UP)
 		{
 			goalIntakeUp(robotGoalIntake);
+			goalIntakeClose(robotGoalIntake);
 		}
 		else if(goalIntakeState == GOAL_INTAKE_DOWN)
 		{
 			goalIntakeDown(robotGoalIntake);
-		}
-
-		if(OIGetGoalIntakeOpen())
-		{
-			goalIntakeOpen(robotGoalIntake);
-		}
-		else if(OIGetGoalIntakeDown())
-		{
-			goalIntakeDown(robotGoalIntake);
+			goalIntakeClose(robotGoalIntake);
 		}
 
 		delay(25);

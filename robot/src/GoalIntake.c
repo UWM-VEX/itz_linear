@@ -64,7 +64,7 @@ void goalIntakeOpen(GoalIntake* goalIntake)
 	goalIntakePneumatics(goalIntake, GOAL_INTAKE_OPEN);
 }
 
-void GoalIntakeClose(GoalIntake* goalIntake)
+void goalIntakeClose(GoalIntake* goalIntake)
 {
 	goalIntakePneumatics(goalIntake, GOAL_INTAKE_CLOSE);
 }
