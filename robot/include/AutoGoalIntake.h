@@ -5,11 +5,12 @@
 
 struct AutoGoalIntake{
 	GoalIntake* goalIntake;
-	int position;
+	int upOrDown;
+	int openOrClose;
 	int isFinished;
 }typedef AutoGoalIntake;
 
-AutoGoalIntake* initAutoGoalIntake(GoalIntake* goalIntake, int position);
+AutoGoalIntake* initAutoGoalIntake(GoalIntake* goalIntake, int upOrDown, int openOrClose);
 void autoGoalIntake(AutoGoalIntake* step);
 
 #endif

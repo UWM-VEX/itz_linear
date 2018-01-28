@@ -1,11 +1,12 @@
 #include "main.h"
 
-AutoGoalIntake* initAutoGoalIntake(GoalIntake* goalIntake, int position)
+AutoGoalIntake* initAutoGoalIntake(GoalIntake* goalIntake, int upOrDown, int openOrClose)
 {
 	AutoGoalIntake* newStep = (AutoGoalIntake*) malloc(sizeof(AutoGoalIntake));
 
 	newStep->goalIntake = goalIntake;
-	newStep->position = position;
+	newStep->upOrDown = upOrDown;
+	newStep->openOrClose = openOrClose;
 	newStep->isFinished = false;
 
 	return newStep;
@@ -13,5 +14,6 @@ AutoGoalIntake* initAutoGoalIntake(GoalIntake* goalIntake, int position)
 
 void autoGoalIntake(AutoGoalIntake* step)
 {
-	step->isFinished = goalIntakeToPosition(step->goalIntake, step->position);
+	goalIntakePneumatics(step->goalIntake, step->openOrClose);
+	step->isFinished = goalIntakeToPosition(step->goalIntake, step->upOrDown);
 }
