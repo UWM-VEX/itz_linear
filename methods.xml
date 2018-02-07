@@ -15,9 +15,9 @@
 		<pointer>true</pointer>
 	</method>
 	<method>
-		<javaCommand>autoRoller</javaCommand>
-		<declaration>AutoRoller</declaration>
-		<instantiation>initAutoRoller</instantiation>
+		<javaCommand>autoClaw</javaCommand>
+		<declaration>AutoClaw</declaration>
+		<instantiation>initAutoClaw</instantiation>
 		<doneReference>.isFinished</doneReference>
 		<pointer>true</pointer>
 	</method>
@@ -29,9 +29,9 @@
 		<pointer>true</pointer>
 	</method>
 	<method>
-		<javaCommand>autoWrist</javaCommand>
-		<declaration>AutoWrist</declaration>
-		<instantiation>initAutoWrist</instantiation>
+		<javaCommand>autoClawHolder</javaCommand>
+		<declaration>AutoClawHolder</declaration>
+		<instantiation>initAutoClawHolder</instantiation>
 		<doneReference>.isFinished</doneReference>
 		<pointer>true</pointer>
 	</method>
