@@ -9,9 +9,19 @@ Claw* initClaw(PantherMotor motor)
   return newClaw;
 }
 
-void clawAtSpeed(Claw* claw, int speed)
+void clawToValue(Claw* claw, int value)
 {
-  speed = limit(speed, 127, -127);
+  value = limit(value, 127, -127);
 
-  setPantherMotor(claw->motor, speed);
+  setPantherMotor(claw->motor, value);
+}
+
+void clawOpen(Claw* claw)
+{
+	clawToValue(claw, CLAW_OPEN);
+}
+
+void clawClose(Claw* claw)
+{
+	clawToValue(claw, CLAW_CLOSE);
 }

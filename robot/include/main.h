@@ -60,6 +60,7 @@
 #include "AutoClawHolder.h"
 #include "AutoLift.h"
 #include "AutoGoalIntake.h"
+#include "AutoClaw.h"
 #include "Timeout.h"
 
 

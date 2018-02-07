@@ -46,6 +46,8 @@ void operatorControl()
 
 	int goalIntakeState = GOAL_INTAKE_UP;
 
+	int clawState = CLAW_CLOSE;
+
 	teleopInit();
 
 	while (true)
@@ -185,6 +187,21 @@ void operatorControl()
 		{
 			goalIntakeDown(robotGoalIntake);
 			goalIntakeClose(robotGoalIntake);
+		}
+
+		if(OIGetClawOpen())
+		{
+			clawState = CLAW_OPEN;
+			clawOpen(robotClaw);
+		}
+		else if(OIGetClawClose())
+		{
+			clawState = CLAW_CLOSE;
+			clawClose(robotClaw);
+		}
+		else
+		{
+			clawToValue(robotClaw, clawState);
 		}
 
 		delay(25);

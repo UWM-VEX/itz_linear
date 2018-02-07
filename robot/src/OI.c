@@ -77,9 +77,14 @@ int OIGetClawHolderStack()
 	return joystickGetDigital(2, 5, JOY_UP);
 }
 
-int OIGetClaw()
+int OIGetClawOpen()
 {
-	return joystickGetAnalog(2,1);
+	return joystickGetDigital(1, 5, JOY_UP);
+}
+
+int OIGetClawClose()
+{
+	return joystickGetDigital(1, 6, JOY_UP);
 }
 
 int OIGetGoalIntakeRelease()

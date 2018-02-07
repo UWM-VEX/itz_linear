@@ -3,11 +3,16 @@
 
 #include "main.h"
 
+#define CLAW_OPEN -50
+#define CLAW_CLOSE 50
+
 struct Claw{
   PantherMotor motor;
 } typedef Claw;
 
 Claw* initClaw(PantherMotor motor);
-void clawAtSpeed(Claw* claw, int speed);
+void clawToValue(Claw* claw, int value);
+void clawOpen(Claw* claw);
+void clawClose(Claw* claw);
 
 #endif

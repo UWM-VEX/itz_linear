@@ -22,7 +22,8 @@ int OIGetLiftStationaryStack();
 int OIGetClawHolder();
 int OIGetClawHolderLoad();
 int OIGetClawHolderStack();
-int OIGetClaw();
+int OIGetClawOpen();
+int OIGetClawClose();
 int OIGetGoalIntakeRelease();
 int OIGetGoalIntakeCarry();
 
