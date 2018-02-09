@@ -172,12 +172,12 @@ void initializeIO() {
 
 void initialize() {
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(6,1),
-						initPantherMotor(1,1), initPantherMotor(10,0),
-						encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 190));
-	initLift(robotLift, initPantherMotor(4,1), initPantherMotor(8,0), encoderInit(7, 8, 0));
-	initClawHolder(robotClawHolder, initPantherMotor(5,1), initPantherMotor(9,0), encoderInit(5, 6, 0));
-	robotClaw = initClaw(initPantherMotor(7,0));
-	initGoalIntake(robotGoalIntake, initPantherMotor(3,0), 2);
+						initPantherMotor(7,0), initPantherMotor(3,1),
+						encoderInit(3, 4, 0), encoderInit(5,6,0), gyroInit(2, 190));
+	initLift(robotLift, initPantherMotor(1,1), initPantherMotor(10,0), encoderInit(1, 2, 0));
+	initClawHolder(robotClawHolder, initPantherMotor(4,1), initPantherMotor(8,0), encoderInit(7, 8, 0));
+	robotClaw = initClaw(initPantherMotor(9,0));
+	initGoalIntake(robotGoalIntake, initPantherMotor(5,0), 1);
 
 	lcdModeSelect();
 }
