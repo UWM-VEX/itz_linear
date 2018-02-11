@@ -44,7 +44,7 @@ void operatorControl()
 	bool lastLiftAutoMode = false;
 	int lastLiftPosition = LIFT_FLOOR_LOAD;
 
-	int goalIntakeState = GOAL_INTAKE_UP;
+	int goalIntakeState = GOAL_INTAKE_STOP;
 
 	int clawState = CLAW_CLOSE;
 
@@ -186,7 +186,11 @@ void operatorControl()
 		else if(goalIntakeState == GOAL_INTAKE_DOWN)
 		{
 			goalIntakeDown(robotGoalIntake);
-			goalIntakeClose(robotGoalIntake);
+			goalIntakeOpen(robotGoalIntake);
+		}
+		else
+		{
+			goalIntakeAtSpeed(robotGoalIntake, 0);
 		}
 
 		if(OIGetClawOpen())

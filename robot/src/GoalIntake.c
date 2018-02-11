@@ -22,12 +22,14 @@ void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
   speed = limit(speed, 127, -127);
 
   setPantherMotor(goalIntake->motor, speed);
+
+  lcdPrint(uart1, 1, "Pot: %d", analogRead(goalIntake->pot));
 }
 
 bool goalIntakeToPosition(GoalIntake* goalIntake, int position)
 {
 	int currentPosition = analogRead(goalIntake->pot);
-	if (abs(currentPosition - position) < 20)
+	if (abs(currentPosition - position) < 50)
 	{
 		goalIntakeAtSpeed(goalIntake, 0);
 		return true;
