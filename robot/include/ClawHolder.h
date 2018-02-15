@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-#define CLAW_HOLDER_LOAD 100
-#define CLAW_HOLDER_STACK 200
+#define CLAW_HOLDER_LOAD 0
+#define CLAW_HOLDER_STACK 260
 
 struct ClawHolder{
   PantherMotor leftMotor;

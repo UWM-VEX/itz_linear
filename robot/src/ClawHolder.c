@@ -16,7 +16,7 @@ void initClawHolder(ClawHolder* clawHolder, PantherMotor leftMotor, PantherMotor
   clawHolder->leftMotor = leftMotor;
   clawHolder->rightMotor = rightMotor;
   clawHolder->encoder = encoder;
-  clawHolder->pid = initPIDController(1.0, 0, 0, 0, 0, 20);
+  clawHolder->pid = initPIDController(0.5, 0, 0, 0, 0, 10);
 }
 
 void clawHolderAtSpeed(ClawHolder* clawHolder, int speed)
@@ -25,11 +25,13 @@ void clawHolderAtSpeed(ClawHolder* clawHolder, int speed)
 
   setPantherMotor(clawHolder->leftMotor, speed);
   setPantherMotor(clawHolder->rightMotor, speed);
+
+  lcdPrint(uart1, 2, "CH: %d", encoderGet(clawHolder->encoder));
 }
 
 void clawHolderProcess(ClawHolder* clawHolder)
 {
-  if(digitalRead(clawHolder->limitSwitch) == HIGH)
+  if(digitalRead(clawHolder->limitSwitch) == LOW)
   {
     encoderReset(clawHolder->encoder);
   }
@@ -37,6 +39,8 @@ void clawHolderProcess(ClawHolder* clawHolder)
 
 bool clawHolderToPosition(ClawHolder* clawHolder, int position, bool isFirstTime)
 {
+  PIDsetSetPoint(clawHolder->pid, position);
+
   int deadband = 10;
 
   if(isFirstTime)

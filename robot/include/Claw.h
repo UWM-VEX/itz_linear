@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define CLAW_OPEN -25
+#define CLAW_OPEN 0
 #define CLAW_CLOSE -127
 
 struct Claw{
