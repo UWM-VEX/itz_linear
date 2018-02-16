@@ -3,11 +3,11 @@
 
 #include "main.h"
 
-#define LIFT_FLOOR_LOAD 100
+#define LIFT_FLOOR_LOAD 0
 #define LIFT_AUTO_LOAD 125
-#define LIFT_LOW_STACK 150
-#define LIFT_MID_STACK 175
-#define LIFT_HIGH_STACK 200
+#define LIFT_LOW_STACK 275
+#define LIFT_MID_STACK 1471
+#define LIFT_HIGH_STACK 2041
 #define LIFT_STATIONARY_STACK 225
 
 struct Lift{

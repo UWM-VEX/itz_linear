@@ -37,6 +37,8 @@ void liftProcess(Lift* lift)
 
 bool liftToPosition(Lift* lift, int position, bool isFirstTime)
 {
+  PIDsetSetPoint(lift->pid, position);
+
   int deadband = 10;
 
   if(isFirstTime)

@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-#define CLAW_OPEN 0
-#define CLAW_CLOSE -127
+#define CLAW_OPEN 70
+#define CLAW_CLOSE -50
 
 struct Claw{
   PantherMotor motor;
