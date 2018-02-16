@@ -16,7 +16,7 @@ void initLift(Lift* lift, PantherMotor leftMotor, PantherMotor rightMotor, Encod
   lift->leftMotor = leftMotor;
   lift->rightMotor = rightMotor;
   lift->encoder = encoder;
-  lift->pid = initPIDController(1.0, 0, 0, 0, 0, 20);
+  lift->pid = initPIDController(3, 0, 0, 0, 0, 50);
 }
 
 void liftAtSpeed(Lift* lift, int speed)
@@ -39,7 +39,7 @@ bool liftToPosition(Lift* lift, int position, bool isFirstTime)
 {
   PIDsetSetPoint(lift->pid, position);
 
-  int deadband = 10;
+  int deadband = 50;
 
   if(isFirstTime)
   {
@@ -49,7 +49,10 @@ bool liftToPosition(Lift* lift, int position, bool isFirstTime)
   int pidProcessVariable = encoderGet(lift->encoder);
   int output = PIDRunController(lift->pid, (double) pidProcessVariable);
 
-  output = enforceDeadband(output, 0, deadband);
+  if(abs(position - pidProcessVariable) < deadband)
+  {
+    output = 0;
+  }
 
   liftAtSpeed(lift, output);
 
