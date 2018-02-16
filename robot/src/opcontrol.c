@@ -185,8 +185,10 @@ void operatorControl()
 		}
 		else if(goalIntakeState == GOAL_INTAKE_DOWN)
 		{
-			goalIntakeDown(robotGoalIntake);
-			goalIntakeOpen(robotGoalIntake);
+			if(goalIntakeDown(robotGoalIntake))
+			{
+				goalIntakeOpen(robotGoalIntake);
+			}
 		}
 		else
 		{
