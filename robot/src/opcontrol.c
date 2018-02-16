@@ -69,6 +69,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_FLOOR_LOAD;
 
+				clawHolderPosition = CLAW_HOLDER_LOAD;
+
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_FLOOR_LOAD);
 
 				liftFloorLoadPosition(robotLift, firstTime);
@@ -77,6 +79,8 @@ void operatorControl()
 			{
 				liftAutoMode = true;
 				liftPosition = LIFT_AUTO_LOAD;
+
+				clawHolderPosition = CLAW_HOLDER_LOAD;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_AUTO_LOAD);
 
@@ -87,6 +91,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_LOW_STACK;
 
+				clawHolderPosition = CLAW_HOLDER_STACK;
+
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_LOW_STACK);
 
 				liftLowStackPosition(robotLift, firstTime);
@@ -95,6 +101,8 @@ void operatorControl()
 			{
 				liftAutoMode = true;
 				liftPosition = LIFT_MID_STACK;
+
+				clawHolderPosition = CLAW_HOLDER_STACK;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_MID_STACK);
 
@@ -105,6 +113,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_HIGH_STACK;
 
+				clawHolderPosition = CLAW_HOLDER_STACK;
+
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_HIGH_STACK);
 
 				liftHighStackPosition(robotLift, firstTime);
@@ -113,6 +123,8 @@ void operatorControl()
 			{
 				liftAutoMode = true;
 				liftPosition = LIFT_STATIONARY_STACK;
+
+				clawHolderPosition = CLAW_HOLDER_STACK;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_STATIONARY_STACK);
 
@@ -123,6 +135,11 @@ void operatorControl()
 				if(liftAutoMode)
 				{
 					liftToPosition(robotLift, liftPosition, false);
+
+					if(clawHodlerPastStackingThreshold(robotClawHolder))
+					{
+						clawState = CLAW_OPEN;
+					}
 				}
 				else
 				{

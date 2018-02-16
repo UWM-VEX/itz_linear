@@ -67,3 +67,8 @@ bool clawHolderStackPosition(ClawHolder* clawHolder, bool isFirstTime)
 {
   return clawHolderToPosition(clawHolder, CLAW_HOLDER_STACK, isFirstTime);
 } 
+
+bool clawHodlerPastStackingThreshold(ClawHolder* clawHolder)
+{
+  return encoderGet(clawHolder->encoder) > CLAW_HOLDER_STACKING_THRESHOLD;
+}

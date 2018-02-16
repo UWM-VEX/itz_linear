@@ -5,6 +5,7 @@
 
 #define CLAW_HOLDER_LOAD 0
 #define CLAW_HOLDER_STACK 260
+#define CLAW_HOLDER_STACKING_THRESHOLD 250
 
 struct ClawHolder{
   PantherMotor leftMotor;
@@ -21,5 +22,6 @@ void clawHolderProcess(ClawHolder* clawHolder);
 bool clawHolderToPosition(ClawHolder* clawHolder, int position, bool isFirstTime);
 bool clawHolderLoadPosition(ClawHolder* clawHolder, bool isFirstTime);
 bool clawHolderStackPosition(ClawHolder* clawHolder, bool isFirstTime);
+bool clawHodlerPastStackingThreshold(ClawHolder* clawHolder);
 
 #endif
