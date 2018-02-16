@@ -7,8 +7,8 @@
 #define LIFT_AUTO_LOAD 125
 #define LIFT_LOW_STACK 275
 #define LIFT_MID_STACK 1471
-#define LIFT_HIGH_STACK 2041
-#define LIFT_STATIONARY_STACK 225
+#define LIFT_HIGH_STACK 2000
+#define LIFT_STATIONARY_STACK 2000
 
 struct Lift{
   PantherMotor leftMotor;

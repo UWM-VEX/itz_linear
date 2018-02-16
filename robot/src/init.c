@@ -175,7 +175,7 @@ void initialize() {
 						initPantherMotor(7,0), initPantherMotor(3,1),
 						encoderInit(3, 4, 0), encoderInit(5,6,0), gyroInit(2, 190));
 	initLift(robotLift, initPantherMotor(1,1), initPantherMotor(10,0), encoderInit(1, 2, 1));
-	initClawHolder(robotClawHolder, initPantherMotor(4,1), initPantherMotor(8,0), encoderInit(7, 8, 1));
+	initClawHolder(robotClawHolder, initPantherMotor(4,0), initPantherMotor(8,1), encoderInit(7, 8, 1));
 	robotClaw = initClaw(initPantherMotor(9,0));
 	initGoalIntake(robotGoalIntake, initPantherMotor(5,0), 1);
 
