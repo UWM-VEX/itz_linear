@@ -14,5 +14,6 @@ AutoLift* initAutoLift(Lift* lift, int position)
 void autoLift(AutoLift* step)
 {
 	int isFirstTime = (autonomousInfo.step != autonomousInfo.lastStep);
-	step->isFinished = liftToPosition(step->lift, step->position, isFirstTime);
+	step->isFinished = (liftToPosition(step->lift, step->position, isFirstTime)
+		&& autonomousInfo.elapsedTime > 250);
 }

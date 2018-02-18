@@ -70,6 +70,7 @@ void operatorControl()
 				liftPosition = LIFT_FLOOR_LOAD;
 
 				clawHolderPosition = CLAW_HOLDER_LOAD;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_FLOOR_LOAD);
 
@@ -81,6 +82,7 @@ void operatorControl()
 				liftPosition = LIFT_AUTO_LOAD;
 
 				clawHolderPosition = CLAW_HOLDER_LOAD;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_AUTO_LOAD);
 
@@ -92,6 +94,7 @@ void operatorControl()
 				liftPosition = LIFT_LOW_STACK;
 
 				clawHolderPosition = CLAW_HOLDER_STACK;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_LOW_STACK);
 
@@ -103,6 +106,7 @@ void operatorControl()
 				liftPosition = LIFT_MID_STACK;
 
 				clawHolderPosition = CLAW_HOLDER_STACK;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_MID_STACK);
 
@@ -114,6 +118,7 @@ void operatorControl()
 				liftPosition = LIFT_HIGH_STACK;
 
 				clawHolderPosition = CLAW_HOLDER_STACK;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_HIGH_STACK);
 
@@ -125,6 +130,7 @@ void operatorControl()
 				liftPosition = LIFT_STATIONARY_STACK;
 
 				clawHolderPosition = CLAW_HOLDER_STACK;
+				clawHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_STATIONARY_STACK);
 

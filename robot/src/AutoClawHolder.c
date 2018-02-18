@@ -14,5 +14,6 @@ AutoClawHolder* initAutoClawHolder(ClawHolder* clawHolder, int position)
 void autoClawHolder(AutoClawHolder* step)
 {
 	int isFirstTime = (autonomousInfo.step != autonomousInfo.lastStep);
-	step->isFinished = clawHolderToPosition(step->clawHolder, step->position, isFirstTime);
+	step->isFinished = (clawHolderToPosition(step->clawHolder, step->position, isFirstTime)
+		&& autonomousInfo.elapsedTime > 250);
 }

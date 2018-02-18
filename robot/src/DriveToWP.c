@@ -54,8 +54,8 @@ void driveToWP(DriveToWP * step)
 		step->isFirstTime = 0;
 	}
 
-	lcdPrint(uart1, 1, "L: %d", encoderGet(step->properties->drive->leftEncoder));
-	lcdPrint(uart1, 2, "R: %d", encoderGet(step->properties->drive->rightEncoder));
+	//lcdPrint(uart1, 1, "L: %d", encoderGet(step->properties->drive->leftEncoder));
+	//lcdPrint(uart1, 2, "R: %d", encoderGet(step->properties->drive->rightEncoder));
 	//lcdPrint(uart1, 1, "Gyro: %d", gyroGet(step->properties->drive.gyro));
 
 	double averageMagEncoder = ((double)((encoderGet(step->properties->drive->leftEncoder)
@@ -107,12 +107,12 @@ void driveToWP(DriveToWP * step)
 
 		if(inDistanceDB)
 		{
-			//lcdSetText(uart1, 1, "Mag: DB");
+			lcdSetText(uart1, 1, "Mag: DB");
 			magnitude = 0;
 		}
 		else if(absDouble(distanceError) < step->properties->magnitudeBreakingDistance)
 		{
-			//lcdSetText(uart1, 1, "Mag: Break");
+			lcdSetText(uart1, 1, "Mag: Break");
 			// slow down
 			// magnitude = (Vmax - Vmin)(SP - PV)/Breaking Distance + Vmin
 			magnitude = (int) ((step->properties->magnitudeMaxSpeed -
@@ -122,7 +122,7 @@ void driveToWP(DriveToWP * step)
 		}
 		else if(autonomousInfo.elapsedTime < step->properties->magnitudeRampUpTime)
 		{
-			//lcdSetText(uart1, 1, "Mag: Accel");
+			lcdSetText(uart1, 1, "Mag: Accel");
 			// speed up
 			// magnitude = (Vmax - Vmin)*t/ramp up time + Vmin
 			magnitude = (int) ((step->properties->magnitudeMaxSpeed -
@@ -132,26 +132,26 @@ void driveToWP(DriveToWP * step)
 		}
 		else
 		{
-			//lcdSetText(uart1, 1, "Mag: Coast");
+			lcdSetText(uart1, 1, "Mag: Coast");
 			// coast
 			magnitude = step->properties->magnitudeMaxSpeed;
 		}
 
 		if(inRotationDB)
 		{
-			//lcdSetText(uart1, 2, "Rot: DB");
+			lcdSetText(uart1, 2, "Rot: DB");
 			// no rotation
 			rotation = 0;
 		}
 		else if(abs(rotationError) < step->properties->rotationBreakingDistance)
 		{
-			//lcdSetText(uart1, 2, "Rot: Slow");
+			lcdSetText(uart1, 2, "Rot: Slow");
 			// turn slowly
 			rotation = step->properties->rotationMinSpeed;
 		}
 		else
 		{
-			//lcdSetText(uart1, 2, "Rot: Fast");
+			lcdSetText(uart1, 2, "Rot: Fast");
 			// turn quickly
 			rotation = step->properties->rotationMaxSpeed;
 		}
