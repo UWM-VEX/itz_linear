@@ -39,23 +39,39 @@ void clawHolderProcess(ClawHolder* clawHolder)
 
 bool clawHolderToPosition(ClawHolder* clawHolder, int position, bool isFirstTime)
 {
-  PIDsetSetPoint(clawHolder->pid, position);
-
-  int deadband = 10;
-
-  if(isFirstTime)
+  if(position == CLAW_HOLDER_TO_LIMIT_SWITCH)
   {
-    PIDReset(clawHolder->pid);
+    if( ! (digitalRead(clawHolder->limitSwitch) == LOW))
+    {
+      clawHolderAtSpeed(clawHolder, -127);
+      return false;
+    }
+    else
+    {
+      clawHolderAtSpeed(clawHolder, 0);
+      return true;
+    }
   }
+  else
+  {
+    PIDsetSetPoint(clawHolder->pid, position);
 
-  int pidProcessVariable = encoderGet(clawHolder->encoder);
-  int output = PIDRunController(clawHolder->pid, (double) pidProcessVariable);
+    int deadband = 10;
 
-  output = enforceDeadband(output, 0, deadband);
+    if(isFirstTime)
+    {
+      PIDReset(clawHolder->pid);
+    }
 
-  clawHolderAtSpeed(clawHolder, output);
+    int pidProcessVariable = encoderGet(clawHolder->encoder);
+    int output = PIDRunController(clawHolder->pid, (double) pidProcessVariable);
 
-  return (output == 0);
+    output = enforceDeadband(output, 0, deadband);
+
+    clawHolderAtSpeed(clawHolder, output);
+
+    return (output == 0);
+  }
 }
 
 bool clawHolderLoadPosition(ClawHolder* clawHolder, bool isFirstTime)

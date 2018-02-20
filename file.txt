@@ -9,6 +9,10 @@ Mode AL_20
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN)
 	}
 	timeout(1000)
+	{
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) ||
+		timeout(2000)
+	}
 	driveToWP(defaultProps, 12, 0)
 	{
 		autoLift(robotLift, LIFT_STATIONARY_STACK) &&
