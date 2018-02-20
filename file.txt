@@ -8,6 +8,7 @@ Mode AL_20
 		autoClaw(robotClaw, CLAW_CLOSE) &&
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN)
 	}
+	timeout(1000)
 	driveToWP(defaultProps, 12, 0)
 	{
 		autoLift(robotLift, LIFT_STATIONARY_STACK) &&
@@ -23,39 +24,47 @@ Mode AL_20
 	driveToWP(defaultProps, -6, 0)
 	driveToWP(defaultProps, 0, -90)
 	driveToWP(defaultProps, 20, 0)
-	driveToWP(defaultProps, 0, 45)
+	driveToWP(defaultProps, 0, 57)
+	autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE)
 	{
-		driveToWP(defaultProps, 24, 0) &&
-		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
-		timeout(5000)
+		driveToWP(defaultProps, 52, 0) ||
+		timeout(4000)
 	}
 	{
-		driveToWP(defaultProps, 24, 0) &&
-		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
-		timeout(4000)
+		driveToWP(defaultProps, -18, 0) ||
+		timeout(2000)
+	}
+	{
+		driveToWP(defaultProps, 0, -30) ||
+		timeout(2000)
+	}
+	autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN)
+	{
+		driveToWP(defaultProps, 14, 0) ||
+		timeout(2000)
 	}
 	{
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE) ||
 		timeout(5000)
 	}
 	{
+		driveToWP(defaultProps, -14, 0) ||
+		timeout(2000)
+	}
+	{
+		driveToWP(defaultProps, 0, 30) ||
+		timeout(2000)
+	}
+	{
 		driveToWP(defaultProps, -48, 0) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, 0, -40) ||
+		driveToWP(defaultProps, 0, -130) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, -18, 0) ||
-		timeout(3000)
-	}
-	{
-		driveToWP(defaultProps, 0, -90) ||
-		timeout(5000)
-	}
-	{
-		driveToWP(defaultProps, 18, 0) ||
+		driveToWP(fastForward, 24, 0) ||
 		timeout(2000)
 	}
 	{
