@@ -23,6 +23,11 @@ void clawHolderAtSpeed(ClawHolder* clawHolder, int speed)
 {
   speed = limit(speed, 127, -127);
 
+  if(digitalRead(clawHolder->limitSwitch) == LOW)
+  {
+    speed = limit(speed, 127, 0);
+  }
+
   setPantherMotor(clawHolder->leftMotor, speed);
   setPantherMotor(clawHolder->rightMotor, speed);
 

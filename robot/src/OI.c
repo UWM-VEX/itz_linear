@@ -96,3 +96,8 @@ int OIGetGoalIntakeCarry()
 {
 	return joystickGetDigital(2, 6, JOY_UP);
 }
+
+int OIGetGoalIntakeScore()
+{
+	return joystickGetDigital(1, 6, JOY_DOWN);
+}

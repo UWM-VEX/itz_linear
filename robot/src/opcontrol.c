@@ -46,7 +46,7 @@ void operatorControl()
 
 	int goalIntakeState = GOAL_INTAKE_STOP;
 
-	int clawState = CLAW_CLOSE;
+	int clawState = CLAW_OPEN;
 
 	teleopInit();
 
@@ -146,6 +146,11 @@ void operatorControl()
 					{
 						clawState = CLAW_OPEN;
 					}
+					else if(liftPosition == LIFT_LOW_STACK || liftPosition == LIFT_MID_STACK ||
+						liftPosition == LIFT_HIGH_STACK || liftPosition == LIFT_STATIONARY_STACK)
+					{
+						clawState = CLAW_CLOSE;
+					}
 				}
 				else
 				{
@@ -200,6 +205,10 @@ void operatorControl()
 		{
 			goalIntakeState = GOAL_INTAKE_DOWN;
 		}
+		else if(OIGetGoalIntakeScore())
+		{
+			goalIntakeState = GOAL_INTAKE_SCORE;
+		}
 
 		if(goalIntakeState == GOAL_INTAKE_UP)
 		{
@@ -212,6 +221,11 @@ void operatorControl()
 			{
 				goalIntakeOpen(robotGoalIntake);
 			}
+		}
+		else if(goalIntakeState == GOAL_INTAKE_SCORE)
+		{
+			goalIntakeUp(robotGoalIntake);
+			goalIntakeOpen(robotGoalIntake);
 		}
 		else
 		{

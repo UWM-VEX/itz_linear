@@ -26,5 +26,6 @@ int OIGetClawOpen();
 int OIGetClawClose();
 int OIGetGoalIntakeRelease();
 int OIGetGoalIntakeCarry();
+int OIGetGoalIntakeScore();
 
 #endif /* INCLUDE_OI_H_ */

@@ -3,11 +3,12 @@
 
 #include "main.h"
 
-#define GOAL_INTAKE_DOWN 1670
-#define GOAL_INTAKE_UP 2900
+#define GOAL_INTAKE_DOWN 1500
+#define GOAL_INTAKE_UP 2750
 #define GOAL_INTAKE_STOP 0
 #define GOAL_INTAKE_OPEN LOW
 #define GOAL_INTAKE_CLOSE HIGH
+#define GOAL_INTAKE_SCORE 1
 
 struct GoalIntake{
   PantherMotor motor;

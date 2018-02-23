@@ -16,15 +16,20 @@ void initLift(Lift* lift, PantherMotor leftMotor, PantherMotor rightMotor, Encod
   lift->leftMotor = leftMotor;
   lift->rightMotor = rightMotor;
   lift->encoder = encoder;
-  lift->pid = initPIDController(3, 0, 0, 0, 0, 50);
+  lift->pid = initPIDController(2, 0, 0, 0, 0, 50);
 }
 
 void liftAtSpeed(Lift* lift, int speed)
 {
+  if(digitalRead(lift->limitSwitch) == LOW)
+  {
+    speed = limit(speed, 127, 0);
+  }
+
   setPantherMotor(lift->leftMotor, speed);
   setPantherMotor(lift->rightMotor, speed);
 
-  lcdPrint(uart1, 1, "Lift: %d", encoderGet(lift->encoder));
+  //lcdPrint(uart1, 1, "Lift: %d", encoderGet(lift->encoder));
 }
 
 void liftProcess(Lift* lift)
