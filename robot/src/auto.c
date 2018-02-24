@@ -231,7 +231,7 @@ Timeout * command94;
 DriveToWP * command95;
 Timeout * command96;
 
-AutoGoalIntake * command97;
+DriveToWP * command97;
 Timeout * command98;
 
 AutoGoalIntake * command99;
@@ -240,16 +240,39 @@ Timeout * command100;
 AutoGoalIntake * command101;
 Timeout * command102;
 
-DriveToWP * command103;
+AutoGoalIntake * command103;
 Timeout * command104;
 
-
 DriveToWP * command105;
-DriveToWP * command106;
-DriveToWP * command107;
-DriveToWP * command108;
-DriveToWP * command109;
-DriveToWP * command110;
+Timeout * command106;
+
+
+AutoClaw * command107;
+AutoGoalIntake * command108;
+
+AutoClawHolder * command109;
+Timeout * command110;
+Timeout * command111;
+
+DriveToWP * command112;
+AutoGoalIntake * command113;
+Timeout * command114;
+
+AutoGoalIntake * command115;
+Timeout * command116;
+
+AutoGoalIntake * command117;
+Timeout * command118;
+
+DriveToWP * command119;
+
+
+DriveToWP * command120;
+DriveToWP * command121;
+DriveToWP * command122;
+DriveToWP * command123;
+DriveToWP * command124;
+DriveToWP * command125;
 
 // END OF DECLARATIONS
 
@@ -311,7 +334,7 @@ if(autonomousSelection == AL_20_L)
 	command27 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN);
 	command28 = initTimeout(3000);
 
-	command29 = initDriveToWP(defaultProps, 17, 0);
+	command29 = initDriveToWP(defaultProps, 21, 0);
 	command30 = initTimeout(2000);
 
 	command31 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
@@ -321,20 +344,20 @@ if(autonomousSelection == AL_20_L)
 	command34 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE);
 	command35 = initTimeout(5000);
 
-	command36 = initDriveToWP(defaultProps, -21, 0);
+	command36 = initDriveToWP(defaultProps, -25, 0);
 	command37 = initTimeout(1000);
 
-	command38 = initDriveToWP(defaultProps, 0, 30);
-	command39 = initTimeout(2000);
+	command38 = initDriveToWP(defaultProps, 0, -180);
+	command39 = initTimeout(5000);
 
-	command40 = initDriveToWP(defaultProps, -34, 0);
+	command40 = initDriveToWP(fastForward, 42, 0);
 	command41 = initTimeout(5000);
 
-	command42 = initDriveToWP(defaultProps, 0, -150);
+	command42 = initDriveToWP(defaultProps, 0, 50);
 	command43 = initTimeout(3000);
 
-	command44 = initDriveToWP(fastForward, 24, 0);
-	command45 = initTimeout(2000);
+	command44 = initDriveToWP(fastForward, 20, 0);
+	command45 = initTimeout(5000);
 
 	command46 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
 	command47 = initTimeout(1000);
@@ -387,7 +410,7 @@ if(autonomousSelection == AL_20_R)
 	command80 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN);
 	command81 = initTimeout(3000);
 
-	command82 = initDriveToWP(defaultProps, 17, 0);
+	command82 = initDriveToWP(defaultProps, 21, 0);
 	command83 = initTimeout(2000);
 
 	command84 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
@@ -400,36 +423,61 @@ if(autonomousSelection == AL_20_R)
 	command89 = initDriveToWP(defaultProps, -25, 0);
 	command90 = initTimeout(1000);
 
-	command91 = initDriveToWP(defaultProps, -34, 0);
+	command91 = initDriveToWP(defaultProps, 0, 180);
 	command92 = initTimeout(5000);
 
-	command93 = initDriveToWP(defaultProps, 0, -300);
-	command94 = initTimeout(6000);
+	command93 = initDriveToWP(fastForward, 42, 0);
+	command94 = initTimeout(5000);
 
-	command95 = initDriveToWP(fastForward, 24, 0);
-	command96 = initTimeout(2000);
+	command95 = initDriveToWP(defaultProps, 0, -50);
+	command96 = initTimeout(3000);
 
-	command97 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
-	command98 = initTimeout(1000);
+	command97 = initDriveToWP(fastForward, 20, 0);
+	command98 = initTimeout(3000);
 
-	command99 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN);
+	command99 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
 	command100 = initTimeout(1000);
 
-	command101 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN);
-	command102 = initTimeout(3000);
+	command101 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN);
+	command102 = initTimeout(1000);
 
-	command103 = initDriveToWP(defaultProps, -20, 0);
-	command104 = initTimeout(2000);
+	command103 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN);
+	command104 = initTimeout(3000);
+
+	command105 = initDriveToWP(defaultProps, -20, 0);
+	command106 = initTimeout(2000);
+
+}
+if(autonomousSelection == STRAIGHT)
+{
+	command107 = initAutoClaw(robotClaw, CLAW_CLOSE);
+	command108 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN);
+
+	command109 = initAutoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH);
+	command110 = initTimeout(2000);
+	command111 = initTimeout(4000);
+
+	command112 = initDriveToWP(defaultProps, 60, 0);
+	command113 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN);
+	command114 = initTimeout(5000);
+
+	command115 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE);
+	command116 = initTimeout(1000);
+
+	command117 = initAutoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE);
+	command118 = initTimeout(3000);
+
+	command119 = initDriveToWP(defaultProps, -36, 0);
 
 }
 if(autonomousSelection == TEST)
 {
-	command105 = initDriveToWP(defaultProps, 24, 0);
-	command106 = initDriveToWP(defaultProps, -24, 0);
-	command107 = initDriveToWP(defaultProps, 0, 90);
-	command108 = initDriveToWP(defaultProps, 0, -90);
-	command109 = initDriveToWP(defaultProps, 48, 0);
-	command110 = initDriveToWP(defaultProps, -48, 0);
+	command120 = initDriveToWP(defaultProps, 24, 0);
+	command121 = initDriveToWP(defaultProps, -24, 0);
+	command122 = initDriveToWP(defaultProps, 0, 90);
+	command123 = initDriveToWP(defaultProps, 0, -90);
+	command124 = initDriveToWP(defaultProps, 48, 0);
+	command125 = initDriveToWP(defaultProps, -48, 0);
 }
 	// END OF INSTANTIATIONS
 
@@ -749,7 +797,7 @@ void autonomousPeriodic()
 				autonomousInfo.isFinished = (*command95).isFinished || (*command96).isFinished;
 				break;
 			case(24):
-				autoGoalIntake(command97);
+				driveToWP(command97);
 				timeout(command98);
 				autonomousInfo.isFinished = (*command97).isFinished || (*command98).isFinished;
 				break;
@@ -764,9 +812,55 @@ void autonomousPeriodic()
 				autonomousInfo.isFinished = (*command101).isFinished || (*command102).isFinished;
 				break;
 			case(27):
-				driveToWP(command103);
+				autoGoalIntake(command103);
 				timeout(command104);
 				autonomousInfo.isFinished = (*command103).isFinished || (*command104).isFinished;
+				break;
+			case(28):
+				driveToWP(command105);
+				timeout(command106);
+				autonomousInfo.isFinished = (*command105).isFinished || (*command106).isFinished;
+				break;
+
+
+			default:
+				isAuto = 0;
+				break;
+		}
+		break;
+		case(STRAIGHT):
+		switch(autonomousInfo.step)
+		{
+			case(1):
+				autoClaw(command107);
+				autoGoalIntake(command108);
+				autonomousInfo.isFinished = (*command107).isFinished && (*command108).isFinished;
+				break;
+			case(2):
+				autoClawHolder(command109);
+				timeout(command110);
+				timeout(command111);
+				autonomousInfo.isFinished = (*command109).isFinished && (*command110).isFinished || (*command111).isFinished;
+				break;
+			case(3):
+				driveToWP(command112);
+				autoGoalIntake(command113);
+				timeout(command114);
+				autonomousInfo.isFinished = (*command112).isFinished && (*command113).isFinished || (*command114).isFinished;
+				break;
+			case(4):
+				autoGoalIntake(command115);
+				timeout(command116);
+				autonomousInfo.isFinished = (*command115).isFinished || (*command116).isFinished;
+				break;
+			case(5):
+				autoGoalIntake(command117);
+				timeout(command118);
+				autonomousInfo.isFinished = (*command117).isFinished || (*command118).isFinished;
+				break;
+			case(6):
+				driveToWP(command119);
+				autonomousInfo.isFinished = (*command119).isFinished;
 				break;
 
 
@@ -779,34 +873,34 @@ void autonomousPeriodic()
 		switch(autonomousInfo.step)
 		{
 			case(1):
-				driveToWP(command105);
+				driveToWP(command120);
 
-				autonomousInfo.isFinished = (*command105).isFinished;
+				autonomousInfo.isFinished = (*command120).isFinished;
 				break;
 			case(2):
-				driveToWP(command106);
+				driveToWP(command121);
 
-				autonomousInfo.isFinished = (*command106).isFinished;
+				autonomousInfo.isFinished = (*command121).isFinished;
 				break;
 			case(3):
-				driveToWP(command107);
+				driveToWP(command122);
 
-				autonomousInfo.isFinished = (*command107).isFinished;
+				autonomousInfo.isFinished = (*command122).isFinished;
 				break;
 			case(4):
-				driveToWP(command108);
+				driveToWP(command123);
 
-				autonomousInfo.isFinished = (*command108).isFinished;
+				autonomousInfo.isFinished = (*command123).isFinished;
 				break;
 			case(5):
-				driveToWP(command109);
+				driveToWP(command124);
 
-				autonomousInfo.isFinished = (*command109).isFinished;
+				autonomousInfo.isFinished = (*command124).isFinished;
 				break;
 			case(6):
-				driveToWP(command110);
+				driveToWP(command125);
 
-				autonomousInfo.isFinished = (*command110).isFinished;
+				autonomousInfo.isFinished = (*command125).isFinished;
 				break;
 
 

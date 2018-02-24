@@ -49,7 +49,7 @@ Mode AL_20_L
 		timeout(3000)
 	}
 	{
-		driveToWP(defaultProps, 17, 0) ||
+		driveToWP(defaultProps, 21, 0) ||
 		timeout(2000)
 	}
 	{
@@ -62,25 +62,37 @@ Mode AL_20_L
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, -21, 0) ||
+		driveToWP(defaultProps, -25, 0) ||
 		timeout(1000)
 	}
 	{
-		driveToWP(defaultProps, 0, 30) ||
-		timeout(2000)
-	}
-	{
-		driveToWP(defaultProps, -34, 0) ||
+		driveToWP(defaultProps, 0, -180) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, 0, -150) ||
+		driveToWP(fastForward, 42, 0) ||
+		timeout(5000)
+	}
+	{
+		driveToWP(defaultProps, 0, 50) ||
 		timeout(3000)
 	}
 	{
-		driveToWP(fastForward, 24, 0) ||
-		timeout(2000)
+		driveToWP(fastForward, 20, 0) ||
+		timeout(5000)
 	}
+	//{
+	//	driveToWP(defaultProps, 0, -30) ||
+	//	timeout(6000)
+	//}
+	//{
+	//	driveToWP(fastForward, 12, 0) ||
+	//	timeout(2000)
+	//}
+	//{
+	//	driveToWP(fastForward, 0, 30) ||
+	//	timeout(2000)
+	//}
 	{
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
 		timeout(1000)
@@ -144,7 +156,7 @@ Mode AL_20_R
 		timeout(3000)
 	}
 	{
-		driveToWP(defaultProps, 17, 0) ||
+		driveToWP(defaultProps, 21, 0) ||
 		timeout(2000)
 	}
 	{
@@ -160,19 +172,34 @@ Mode AL_20_R
 		driveToWP(defaultProps, -25, 0) ||
 		timeout(1000)
 	}
-	// 20 degree left turn was here
 	{
-		driveToWP(defaultProps, -34, 0) ||
+		driveToWP(defaultProps, 0, 180) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, 0, -300) ||
-		timeout(6000)
+		driveToWP(fastForward, 42, 0) ||
+		timeout(5000)
 	}
 	{
-		driveToWP(fastForward, 24, 0) ||
-		timeout(2000)
+		driveToWP(defaultProps, 0, -50) ||
+		timeout(3000)
 	}
+	{
+		driveToWP(fastForward, 20, 0) ||
+		timeout(3000)
+	}
+	//{
+	//	driveToWP(defaultProps, 0, -30) ||
+	//	timeout(6000)
+	//}
+	//{
+	//	driveToWP(fastForward, 12, 0) ||
+	//	timeout(2000)
+	//}
+	//{
+	//	driveToWP(fastForward, 0, 30) ||
+	//	timeout(2000)
+	//}
 	{
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
 		timeout(1000)
@@ -188,6 +215,33 @@ Mode AL_20_R
 	{
 		driveToWP(defaultProps, -20, 0) ||
 		timeout(2000)
+	}
+EndMode
+Mode STRAIGHT
+	{
+		autoClaw(robotClaw, CLAW_CLOSE) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN)
+	}
+	{
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) &&
+		timeout(2000) ||
+		timeout(4000)
+	}
+	{
+		driveToWP(defaultProps, 60, 0) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(5000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
+		timeout(1000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE) ||
+		timeout(3000)
+	}
+	{
+		driveToWP(defaultProps, -36, 0)
 	}
 EndMode
 Mode TEST
