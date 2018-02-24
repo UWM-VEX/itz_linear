@@ -3,35 +3,37 @@ Four-Bar
 ##
 Mode DO_NOTHING
 EndMode
-Mode AL_20
+Mode AL_20_L
 	{
 		autoClaw(robotClaw, CLAW_CLOSE) &&
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN)
 	}
-	timeout(1000)
 	{
-		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) ||
-		timeout(2000)
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) &&
+		timeout(2000) ||
+		timeout(4000)
 	}
-	driveToWP(defaultProps, 12, 0)
+	driveToWP(defaultProps, 14, 0)
 	{
 		autoLift(robotLift, LIFT_STATIONARY_STACK) &&
 		autoClawHolder(robotClawHolder, CLAW_HOLDER_STACK) ||
-		timeout(5000)
-	}
-	autoClaw(robotClaw, CLAW_OPEN)
-	{
-		autoLift(robotLift, LIFT_FLOOR_LOAD) &&
-		autoClawHolder(robotClawHolder, CLAW_HOLDER_LOAD) ||
 		timeout(3000)
 	}
-	driveToWP(defaultProps, -6, 0)
-	driveToWP(defaultProps, 0, -90)
-	driveToWP(defaultProps, 20, 0)
-	driveToWP(defaultProps, 0, 57)
-	autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE)
+	autoClaw(robotClaw, CLAW_OPEN)
+	timeout(1000)
 	{
-		driveToWP(defaultProps, 52, 0) ||
+		autoLift(robotLift, LIFT_FLOOR_LOAD) &&
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_LOAD) &&
+		timeout(1000) ||
+		timeout(2000)
+	}
+	driveToWP(defaultProps, -8, 0)
+	driveToWP(defaultProps, 0, -80)
+	driveToWP(defaultProps, 12, 0)
+	driveToWP(defaultProps, 0, 45)
+	{
+		driveToWP(defaultProps, 52, 0) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
 		timeout(4000)
 	}
 	{
@@ -39,33 +41,41 @@ Mode AL_20
 		timeout(2000)
 	}
 	{
-		driveToWP(defaultProps, 0, -30) ||
+		driveToWP(defaultProps, 0, -20) ||
 		timeout(2000)
 	}
-	autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN)
 	{
-		driveToWP(defaultProps, 14, 0) ||
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(3000)
+	}
+	{
+		driveToWP(defaultProps, 17, 0) ||
 		timeout(2000)
 	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
+		timeout(1000)
+	}
+	timeout(1000)
 	{
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, -14, 0) ||
-		timeout(2000)
+		driveToWP(defaultProps, -21, 0) ||
+		timeout(1000)
 	}
 	{
 		driveToWP(defaultProps, 0, 30) ||
 		timeout(2000)
 	}
 	{
-		driveToWP(defaultProps, -48, 0) ||
+		driveToWP(defaultProps, -34, 0) ||
 		timeout(5000)
 	}
 	{
-		driveToWP(defaultProps, 0, -130) ||
-		timeout(5000)
+		driveToWP(defaultProps, 0, -150) ||
+		timeout(3000)
 	}
 	{
 		driveToWP(fastForward, 24, 0) ||
@@ -77,6 +87,102 @@ Mode AL_20
 	}
 	{
 		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(1000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN) ||
+		timeout(3000)
+	}
+	{
+		driveToWP(defaultProps, -20, 0) ||
+		timeout(2000)
+	}
+EndMode
+Mode AL_20_R
+	{
+		autoClaw(robotClaw, CLAW_CLOSE) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN)
+	}
+	{
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) &&
+		timeout(2000) ||
+		timeout(4000)
+	}
+	driveToWP(defaultProps, 14, 0)
+	{
+		autoLift(robotLift, LIFT_STATIONARY_STACK) &&
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_STACK) ||
+		timeout(3000)
+	}
+	autoClaw(robotClaw, CLAW_OPEN)
+	timeout(1000)
+	{
+		autoLift(robotLift, LIFT_FLOOR_LOAD) &&
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_LOAD) &&
+		timeout(1000) ||
+		timeout(2000)
+	}
+	driveToWP(defaultProps, -8, 0)
+	driveToWP(defaultProps, 0, 80)
+	driveToWP(defaultProps, 12, 0)
+	driveToWP(defaultProps, 0, -40)
+	{
+		driveToWP(defaultProps, 52, 0) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(4000)
+	}
+	{
+		driveToWP(defaultProps, -18, 0) ||
+		timeout(2000)
+	}
+	{
+		driveToWP(defaultProps, 0, 20) ||
+		timeout(2000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(3000)
+	}
+	{
+		driveToWP(defaultProps, 17, 0) ||
+		timeout(2000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
+		timeout(1000)
+	}
+	timeout(1000)
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_CLOSE) ||
+		timeout(5000)
+	}
+	{
+		driveToWP(defaultProps, -25, 0) ||
+		timeout(1000)
+	}
+	// 20 degree left turn was here
+	{
+		driveToWP(defaultProps, -34, 0) ||
+		timeout(5000)
+	}
+	{
+		driveToWP(defaultProps, 0, -300) ||
+		timeout(6000)
+	}
+	{
+		driveToWP(fastForward, 24, 0) ||
+		timeout(2000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_CLOSE) ||
+		timeout(1000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(1000)
+	}
+	{
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_UP, GOAL_INTAKE_OPEN) ||
 		timeout(3000)
 	}
 	{

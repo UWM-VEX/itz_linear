@@ -23,7 +23,7 @@ void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
 
   setPantherMotor(goalIntake->motor, speed);
 
-  //lcdPrint(uart1, 1, "Pot: %d", analogRead(goalIntake->pot));
+  lcdPrint(uart1, 1, "Pot: %d", analogRead(goalIntake->pot));
 }
 
 bool goalIntakeToPosition(GoalIntake* goalIntake, int position)

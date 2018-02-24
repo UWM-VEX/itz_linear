@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-#define GOAL_INTAKE_DOWN 1500
-#define GOAL_INTAKE_UP 2750
+#define GOAL_INTAKE_DOWN 1550
+#define GOAL_INTAKE_UP 2650
 #define GOAL_INTAKE_STOP 0
 #define GOAL_INTAKE_OPEN LOW
 #define GOAL_INTAKE_CLOSE HIGH

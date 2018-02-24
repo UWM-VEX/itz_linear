@@ -29,7 +29,7 @@ void liftAtSpeed(Lift* lift, int speed)
   setPantherMotor(lift->leftMotor, speed);
   setPantherMotor(lift->rightMotor, speed);
 
-  //lcdPrint(uart1, 1, "Lift: %d", encoderGet(lift->encoder));
+  lcdPrint(uart1, 1, "Lift: %d", encoderGet(lift->encoder));
 }
 
 void liftProcess(Lift* lift)
