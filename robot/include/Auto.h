@@ -40,7 +40,8 @@ int alliance;
 #define AL_20_L 1
 #define AL_20_R 2
 #define STRAIGHT 3
-#define TEST 4
+#define CRASH 4
+#define TEST 5
 // END OF MODES
 
 int autonomousSelection;

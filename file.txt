@@ -23,7 +23,7 @@ Mode AL_20_L
 	timeout(1000)
 	{
 		autoLift(robotLift, LIFT_FLOOR_LOAD) &&
-		autoClawHolder(robotClawHolder, CLAW_HOLDER_LOAD) &&
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) &&
 		timeout(1000) ||
 		timeout(2000)
 	}
@@ -130,7 +130,7 @@ Mode AL_20_R
 	timeout(1000)
 	{
 		autoLift(robotLift, LIFT_FLOOR_LOAD) &&
-		autoClawHolder(robotClawHolder, CLAW_HOLDER_LOAD) &&
+		autoClawHolder(robotClawHolder, CLAW_HOLDER_TO_LIMIT_SWITCH) &&
 		timeout(1000) ||
 		timeout(2000)
 	}
@@ -148,7 +148,7 @@ Mode AL_20_R
 		timeout(2000)
 	}
 	{
-		driveToWP(defaultProps, 0, 20) ||
+		driveToWP(defaultProps, 0, 30) ||
 		timeout(2000)
 	}
 	{
@@ -242,6 +242,15 @@ Mode STRAIGHT
 	}
 	{
 		driveToWP(defaultProps, -36, 0)
+	}
+EndMode
+Mode CRASH
+	autoClaw(robotClaw, CLAW_CLOSE)
+	timeout(500)
+	{
+		driveToWP(fastForward, 100, 0) &&
+		autoGoalIntake(robotGoalIntake, GOAL_INTAKE_DOWN, GOAL_INTAKE_OPEN) ||
+		timeout(10000)
 	}
 EndMode
 Mode TEST
