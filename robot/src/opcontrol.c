@@ -48,6 +48,8 @@ void operatorControl()
 
 	int clawState = CLAW_OPEN;
 
+	long goalIntakeUpTime = 0;
+
 	teleopInit();
 
 	while (true)
@@ -212,11 +214,22 @@ void operatorControl()
 
 		if(goalIntakeState == GOAL_INTAKE_UP)
 		{
-			goalIntakeUp(robotGoalIntake);
+			if(goalIntakeUpTime == 0)
+			{
+				goalIntakeUpTime = millis();
+			}
+
+			if(millis() - goalIntakeUpTime > 500)
+			{
+				goalIntakeUp(robotGoalIntake);
+			}
+			
 			goalIntakeClose(robotGoalIntake);
 		}
 		else if(goalIntakeState == GOAL_INTAKE_DOWN)
 		{
+			goalIntakeUpTime = 0;
+
 			if(goalIntakeDown(robotGoalIntake))
 			{
 				goalIntakeOpen(robotGoalIntake);
@@ -224,11 +237,15 @@ void operatorControl()
 		}
 		else if(goalIntakeState == GOAL_INTAKE_SCORE)
 		{
+			goalIntakeUpTime = 0;
+
 			goalIntakeUp(robotGoalIntake);
 			goalIntakeOpen(robotGoalIntake);
 		}
 		else
 		{
+			goalIntakeUpTime = 0;
+			
 			goalIntakeAtSpeed(robotGoalIntake, 0);
 		}
 
