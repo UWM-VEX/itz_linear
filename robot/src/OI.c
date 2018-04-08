@@ -62,29 +62,29 @@ int OIGetLiftStationaryStack()
 	return joystickGetDigital(2, 8, JOY_UP);
 }
 
-int OIGetClawHolder()
+int OIGetRollerHolder()
 {
 	return joystickGetAnalog(2,2);
 }
 
-int OIGetClawHolderLoad()
+int OIGetRollerHolderLoad()
 {
-	return joystickGetDigital(2, 5, JOY_DOWN);
+	return false;//joystickGetDigital(2, 5, JOY_DOWN);
 }
 
-int OIGetClawHolderStack()
+int OIGetRollerHolderStack()
 {
-	return joystickGetDigital(2, 5, JOY_UP);
+	return false;//joystickGetDigital(2, 5, JOY_UP);
 }
 
-int OIGetClawOpen()
+int OIGetRollerIn()
 {
 	return joystickGetDigital(1, 5, JOY_UP);
 }
 
-int OIGetClawClose()
+int OIGetRollerOut()
 {
-	return joystickGetDigital(1, 6, JOY_UP);
+	return joystickGetDigital(1, 5, JOY_DOWN);
 }
 
 int OIGetGoalIntakeRelease()

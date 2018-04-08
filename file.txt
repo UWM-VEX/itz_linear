@@ -3,6 +3,7 @@ Four-Bar
 ##
 Mode DO_NOTHING
 EndMode
+##
 Mode AL_20_L
 	{
 		autoClaw(robotClaw, CLAW_CLOSE) &&
@@ -253,6 +254,7 @@ Mode CRASH
 		timeout(10000)
 	}
 EndMode
+##
 Mode TEST
 	driveToWP(defaultProps, 24, 0)
 	driveToWP(defaultProps, -24, 0)

@@ -37,11 +37,7 @@ int alliance;
 
 // START OF MODES
 #define DO_NOTHING 0
-#define AL_20_L 1
-#define AL_20_R 2
-#define STRAIGHT 3
-#define CRASH 4
-#define TEST 5
+#define TEST 1
 // END OF MODES
 
 int autonomousSelection;

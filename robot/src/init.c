@@ -53,7 +53,7 @@ void lcdModeSelect()
 	int newButtonPressed;
 	int lastStep = 0;
 
-	const char * selectionText[] = {"DO_NOTHING", "AL_20_L", "AL_20_R", "STRAIGHT", "CRASH", "TEST"}; // MODE DEFINITIONS
+	const char * selectionText[] = {"DO_NOTHING", "TEST"}; // MODE DEFINITIONS
 	int size = sizeof(selectionText) / sizeof(int);
 
 	autonomousSelection = 0;
@@ -155,7 +155,7 @@ void lcdModeSelect()
   */
 void initializeIO() {
 	robotLift = initLiftIO(9);
-	robotClawHolder = initClawHolderIO(10);
+	robotRollerHolder = initRollerHolderIO(10);
 	robotGoalIntake = initGoalIntakeIO(11);
 	lcdInit(uart1);
 }
@@ -175,8 +175,8 @@ void initialize() {
 						initPantherMotor(7,0), initPantherMotor(3,1),
 						encoderInit(3, 4, 1), encoderInit(5,6,1), gyroInit(2, 190));
 	initLift(robotLift, initPantherMotor(1,1), initPantherMotor(10,0), encoderInit(1, 2, 1));
-	initClawHolder(robotClawHolder, initPantherMotor(4,0), initPantherMotor(8,1), encoderInit(7, 8, 1));
-	robotClaw = initClaw(initPantherMotor(9,0));
+	initRollerHolder(robotRollerHolder, initPantherMotor(4,0), initPantherMotor(8,1), encoderInit(7, 8, 1));
+	robotRoller = initRoller(initPantherMotor(9,0));
 	initGoalIntake(robotGoalIntake, initPantherMotor(5,0), 1);
 
 	lcdModeSelect();

@@ -16,8 +16,8 @@
 
 Drive * robotDrive;
 Lift * robotLift;
-ClawHolder * robotClawHolder;
-Claw * robotClaw;
+RollerHolder * robotRollerHolder;
+Roller * robotRoller;
 GoalIntake * robotGoalIntake;
 
 #endif /* INCLUDE_ROBOT_H_ */

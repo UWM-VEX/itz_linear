@@ -34,10 +34,10 @@ void teleopInit()
  */
 void operatorControl()
 {
-	bool clawHolderAutoMode = false;
-	int clawHolderPosition = CLAW_HOLDER_LOAD;
-	bool lastClawHolderAutoMode = false;
-	int lastClawHolderPosition = CLAW_HOLDER_LOAD;
+	bool rollerHolderAutoMode = false;
+	int rollerHolderPosition = ROLLER_HOLDER_LOAD;
+	bool lastRollerHolderAutoMode = false;
+	int lastRollerHolderPosition = ROLLER_HOLDER_LOAD;
 
 	bool liftAutoMode = false;
 	int liftPosition = LIFT_FLOOR_LOAD;
@@ -46,7 +46,10 @@ void operatorControl()
 
 	int goalIntakeState = GOAL_INTAKE_STOP;
 
-	int clawState = CLAW_OPEN;
+	int rollerState = ROLLER_STOP;
+
+	bool lastRollerIn = false;
+	bool lastRollerOut = false;
 
 	long goalIntakeUpTime = 0;
 
@@ -54,7 +57,7 @@ void operatorControl()
 
 	while (true)
 	{
-		clawHolderProcess(robotClawHolder);
+		rollerHolderProcess(robotRollerHolder);
 		liftProcess(robotLift);
 
 		tankDrive(robotDrive, OIGetDriveLeft(), OIGetDriveRight());
@@ -71,8 +74,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_FLOOR_LOAD;
 
-				clawHolderPosition = CLAW_HOLDER_LOAD;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_LOAD;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_FLOOR_LOAD);
 
@@ -83,8 +86,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_AUTO_LOAD;
 
-				clawHolderPosition = CLAW_HOLDER_LOAD;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_LOAD;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_AUTO_LOAD);
 
@@ -95,8 +98,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_LOW_STACK;
 
-				clawHolderPosition = CLAW_HOLDER_STACK;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_STACK;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_LOW_STACK);
 
@@ -107,8 +110,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_MID_STACK;
 
-				clawHolderPosition = CLAW_HOLDER_STACK;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_STACK;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_MID_STACK);
 
@@ -119,8 +122,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_HIGH_STACK;
 
-				clawHolderPosition = CLAW_HOLDER_STACK;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_STACK;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_HIGH_STACK);
 
@@ -131,8 +134,8 @@ void operatorControl()
 				liftAutoMode = true;
 				liftPosition = LIFT_STATIONARY_STACK;
 
-				clawHolderPosition = CLAW_HOLDER_STACK;
-				clawHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_STACK;
+				rollerHolderAutoMode = true;
 
 				bool firstTime = ( ! lastLiftAutoMode) || (lastLiftPosition != LIFT_STATIONARY_STACK);
 
@@ -144,14 +147,14 @@ void operatorControl()
 				{
 					liftToPosition(robotLift, liftPosition, false);
 
-					if(clawHodlerPastStackingThreshold(robotClawHolder))
+					if(rollerHodlerPastStackingThreshold(robotRollerHolder))
 					{
-						clawState = CLAW_OPEN;
+						rollerState = ROLLER_OUT;
 					}
 					else if(liftPosition == LIFT_LOW_STACK || liftPosition == LIFT_MID_STACK ||
 						liftPosition == LIFT_HIGH_STACK || liftPosition == LIFT_STATIONARY_STACK)
 					{
-						clawState = CLAW_CLOSE;
+						rollerState = ROLLER_STOP;
 					}
 				}
 				else
@@ -161,40 +164,40 @@ void operatorControl()
 			}
 		}
 		
-		if(abs(OIGetClawHolder()) > 20)
+		if(abs(OIGetRollerHolder()) > 20)
 		{
-			clawHolderAutoMode = false;
-			clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
+			rollerHolderAutoMode = false;
+			rollerHolderAtSpeed(robotRollerHolder, OIGetRollerHolder());
 		}
 		else
 		{
-			if(OIGetClawHolderLoad())
+			if(OIGetRollerHolderLoad())
 			{
-				clawHolderAutoMode = true;
-				clawHolderPosition = CLAW_HOLDER_LOAD;
+				rollerHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_LOAD;
 
-				bool firstTime = ( ! lastClawHolderAutoMode) || (lastClawHolderPosition != CLAW_HOLDER_LOAD);
+				bool firstTime = ( ! lastRollerHolderAutoMode) || (lastRollerHolderPosition != ROLLER_HOLDER_LOAD);
 
-				clawHolderLoadPosition(robotClawHolder, firstTime);
+				rollerHolderLoadPosition(robotRollerHolder, firstTime);
 			}
-			else if(OIGetClawHolderStack())
+			else if(OIGetRollerHolderStack())
 			{
-				clawHolderAutoMode = true;
-				clawHolderPosition = CLAW_HOLDER_STACK;
+				rollerHolderAutoMode = true;
+				rollerHolderPosition = ROLLER_HOLDER_STACK;
 
-				bool firstTime = ( ! lastClawHolderAutoMode) || (lastClawHolderPosition != CLAW_HOLDER_STACK);
+				bool firstTime = ( ! lastRollerHolderAutoMode) || (lastRollerHolderPosition != ROLLER_HOLDER_STACK);
 
-				clawHolderStackPosition(robotClawHolder, firstTime);
+				rollerHolderStackPosition(robotRollerHolder, firstTime);
 			}
 			else
 			{
-				if(clawHolderAutoMode)
+				if(rollerHolderAutoMode)
 				{
-					clawHolderToPosition(robotClawHolder, clawHolderPosition, false);
+					rollerHolderToPosition(robotRollerHolder, rollerHolderPosition, false);
 				}
 				else
 				{
-					clawHolderAtSpeed(robotClawHolder, OIGetClawHolder());
+					rollerHolderAtSpeed(robotRollerHolder, OIGetRollerHolder());
 				}
 			}
 		}
@@ -249,19 +252,35 @@ void operatorControl()
 			goalIntakeAtSpeed(robotGoalIntake, 0);
 		}
 
-		if(OIGetClawOpen())
+		if(OIGetRollerIn())
 		{
-			clawState = CLAW_OPEN;
-			clawOpen(robotClaw);
+			if(lastRollerIn)
+			{
+				rollerStop(robotRoller);
+				rollerState = ROLLER_STOP;
+			}
+			else
+			{
+				rollerState = ROLLER_IN;
+				rollerIn(robotRoller);
+			}
 		}
-		else if(OIGetClawClose())
+		else if(OIGetRollerOut())
 		{
-			clawState = CLAW_CLOSE;
-			clawClose(robotClaw);
+			if(lastRollerOut)
+			{
+				rollerStop(robotRoller);
+				rollerState = ROLLER_STOP;
+			}
+			else
+			{
+				rollerState = ROLLER_OUT;
+				rollerOut(robotRoller);
+			}
 		}
 		else
 		{
-			clawToValue(robotClaw, clawState);
+			rollerToValue(robotRoller, rollerState);
 		}
 
 		delay(25);
