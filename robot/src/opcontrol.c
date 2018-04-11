@@ -264,6 +264,8 @@ void operatorControl()
 				rollerState = ROLLER_IN;
 				rollerIn(robotRoller);
 			}
+			lastRollerIn = true;
+			lastRollerOut = false;
 		}
 		else if(OIGetRollerOut())
 		{
@@ -277,10 +279,14 @@ void operatorControl()
 				rollerState = ROLLER_OUT;
 				rollerOut(robotRoller);
 			}
+			lastRollerIn = false;
+			lastRollerOut = true;
 		}
 		else
 		{
 			rollerToValue(robotRoller, rollerState);
+			lastRollerIn = false;
+			lastRollerOut = false;
 		}
 
 		delay(25);
