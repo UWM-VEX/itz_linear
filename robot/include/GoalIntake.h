@@ -13,11 +13,12 @@
 struct GoalIntake{
   PantherMotor motor;
   int solenoid;
-  int pot;
+  int topLimitSwitch;
+  int bottomLimitSwitch;
 } typedef GoalIntake;
 
 GoalIntake* initGoalIntakeIO(int solenoid);
-void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int pot);
+void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int topLimitSwitch, int bottomLimitSwitch);
 void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed);
 bool goalIntakeToPosition(GoalIntake* goalIntake, int position);
 bool goalIntakeUp(GoalIntake* goalIntake);

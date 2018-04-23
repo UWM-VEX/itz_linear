@@ -11,10 +11,11 @@ GoalIntake* initGoalIntakeIO(int solenoid)
   return newIntake;
 }
 
-void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int pot)
+void initGoalIntake(GoalIntake* goalIntake, PantherMotor motor, int topLimitSwitch, int bottomLimitSwitch)
 {
   goalIntake->motor = motor;
-  goalIntake->pot = pot;
+  goalIntake->topLimitSwitch = topLimitSwitch;
+  goalIntake->bottomLimitSwitch = bottomLimitSwitch;
 }
 
 void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
@@ -23,27 +24,42 @@ void goalIntakeAtSpeed(GoalIntake* goalIntake, int speed)
 
   setPantherMotor(goalIntake->motor, speed);
 
-  lcdPrint(uart1, 1, "Pot: %d", analogRead(goalIntake->pot));
+  lcdPrint(uart1, 1, "TopLS: %d", analogRead(goalIntake->topLimitSwitch));
 }
 
 bool goalIntakeToPosition(GoalIntake* goalIntake, int position)
 {
-	int currentPosition = analogRead(goalIntake->pot);
-	if (abs(currentPosition - position) < 50)
+	bool topLimitSwitchHit = (analogRead(goalIntake->topLimitSwitch) < 100);
+	bool bottomLimitSwitchHit = (analogRead(goalIntake->bottomLimitSwitch) < 100);
+
+	if(position == GOAL_INTAKE_UP)
 	{
-		goalIntakeAtSpeed(goalIntake, 0);
-		return true;
+		if(topLimitSwitchHit)
+		{
+			goalIntakeAtSpeed(goalIntake, 0);
+			return true;
+		}
+		else
+		{
+			goalIntakeAtSpeed(goalIntake, 127);
+			return false;
+		}
 	}
-	else if (currentPosition > position)
+	else if(position == GOAL_INTAKE_DOWN)
 	{
-		goalIntakeAtSpeed(goalIntake, -127);
-		return false;
+		if(bottomLimitSwitchHit)
+		{
+			goalIntakeAtSpeed(goalIntake, 0);
+			return true;
+		}
+		else
+		{
+			goalIntakeAtSpeed(goalIntake, -127);
+			return false;
+		}
 	}
-	else
-	{
-		goalIntakeAtSpeed(goalIntake, 127);
-		return false;
-	}
+
+	return false; // Should never reach this
 }
 
 bool goalIntakeUp(GoalIntake* goalIntake)

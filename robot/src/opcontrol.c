@@ -204,10 +204,12 @@ void operatorControl()
 
 		if(OIGetGoalIntakeCarry())
 		{
+			//goalIntakeAtSpeed(robotGoalIntake, 127);
 			goalIntakeState = GOAL_INTAKE_UP;
 		}
 		else if(OIGetGoalIntakeRelease())
 		{
+			//goalIntakeAtSpeed(robotGoalIntake, -127);
 			goalIntakeState = GOAL_INTAKE_DOWN;
 		}
 		else if(OIGetGoalIntakeScore())
