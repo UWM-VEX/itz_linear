@@ -176,7 +176,7 @@ void initialize() {
 						encoderInit(1, 2, 1), encoderInit(3,4,1), gyroInit(1, 190));
 	initLift(robotLift, initPantherMotor(4,1), initPantherMotor(1,0), encoderInit(5, 6, 1));
 	initRollerHolder(robotRollerHolder, initPantherMotor(5,0), initPantherMotor(9,1), encoderInit(7, 8, 1));
-	robotRoller = initRoller(initPantherMotor(8,0));
+	robotRoller = initRoller(initPantherMotor(8,1));
 	initGoalIntake(robotGoalIntake, initPantherMotor(10,0), 4, 3);
 
 	lcdModeSelect();

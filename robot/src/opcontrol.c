@@ -256,40 +256,46 @@ void operatorControl()
 
 		if(OIGetRollerIn())
 		{
-			if(lastRollerIn)
+			/*if( ! lastRollerIn)
 			{
-				rollerStop(robotRoller);
-				rollerState = ROLLER_STOP;
-			}
-			else
-			{
-				rollerState = ROLLER_IN;
-				rollerIn(robotRoller);
+				if(rollerState == ROLLER_IN)
+				{
+					rollerState = ROLLER_STOP;
+				}
+				else
+				{
+					rollerState = ROLLER_IN;
+				}
 			}
 			lastRollerIn = true;
-			lastRollerOut = false;
+			lastRollerOut = false;*/
+			rollerToValue(robotRoller, ROLLER_IN);
 		}
 		else if(OIGetRollerOut())
 		{
-			if(lastRollerOut)
+			/*if( ! lastRollerOut)
 			{
-				rollerStop(robotRoller);
-				rollerState = ROLLER_STOP;
-			}
-			else
-			{
-				rollerState = ROLLER_OUT;
-				rollerOut(robotRoller);
+				if(rollerState == ROLLER_OUT)
+				{
+					rollerState = ROLLER_STOP;
+				}
+				else
+				{
+					rollerState = ROLLER_OUT;
+				}
 			}
 			lastRollerIn = false;
-			lastRollerOut = true;
+			lastRollerOut = true;*/
+			rollerToValue(robotRoller, ROLLER_OUT);
 		}
 		else
 		{
-			rollerToValue(robotRoller, rollerState);
-			lastRollerIn = false;
-			lastRollerOut = false;
+			//lastRollerIn = false;
+			//lastRollerOut = false;
+			rollerToValue(robotRoller, ROLLER_STOP);
 		}
+		
+		//rollerToValue(robotRoller, rollerState);
 
 		delay(25);
 	}
